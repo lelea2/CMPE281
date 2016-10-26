@@ -1,0 +1,17 @@
+{
+  "name": "cmpe281_cloud_project",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Khanh Dao"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
