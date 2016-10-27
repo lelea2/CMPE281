@@ -26,6 +26,16 @@ module.exports = {
       });
   },
 
+  show(req, res) {
+    User.findById(req.params.id)
+    .then(function (author) {
+      res.status(200).json(author);
+    })
+    .catch(function (error){
+      res.status(500).json(error);
+    });
+  },
+
   update(req, res) {
     User.update(req.body, {
       where: {

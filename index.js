@@ -17,7 +17,7 @@ var app = require('express')(),
 
 app.use(bodyParser.json());
 
-// app.get('/accounts/:id', accounts.show);
+app.get('/accounts/:id', accounts.show);
 app.post('/accounts', accounts.create);
 app.put('/accounts/:id', accounts.update);
 app.delete('/accounts/:id', accounts.delete);
