@@ -1,12 +1,23 @@
 'use strict';
+
+var passwordHash = require('password-hash');
+
 module.exports = function(sequelize, DataTypes) {
   var Users = sequelize.define('Users', {
-    id: DataTypes.STRING,
-    email: DataTypes.STRING,
+    id: {
+      type: DataTypes.STRING,
+      primaryKey: true
+    },
+    email: {
+      type: DataTypes.STRING,
+      unique: true
+    },
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     password: DataTypes.STRING,
-    isAdmin: DataTypes.BOOLEAN
+    isAdmin: DataTypes.BOOLEAN,
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE
   }, {
     classMethods: {
       associate: function(models) {
