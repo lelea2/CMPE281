@@ -26,15 +26,15 @@ app.use(bodyParser.urlencoded({"extended": false}));
 app.use(bodyParser.json())
 
 app.use(cookieParser('keycatboard'));
-app.use(csrfCrypto({ key: 'cmpe281project' }));
-app.use(csrfCrypto.enforcer());
+// app.use(csrfCrypto({ key: 'cmpe281project' }));
+// app.use(csrfCrypto.enforcer());
 
-app.use(function(req, res, next) {
-  if(res.getFormToken !== undefined) {
-    res.locals._csrf = res.getFormToken();
-  }
-  next();
-});
+// app.use(function(req, res, next) {
+//   if(res.getFormToken !== undefined) {
+//     res.locals._csrf = res.getFormToken();
+//   }
+//   next();
+// });
 
 //Using handlebar helper on both client and server side
 //http://codyrushing.com/using-handlebars-helpers-on-both-client-and-server/
@@ -59,6 +59,7 @@ app.get('*', express.static(path.join(__dirname, 'public'), { maxAge: oneWeek })
 /*****************************************************/
 app.get('/api/accounts/:id', accounts.show);
 app.post('/api/accounts', accounts.create);
+app.post('/api/login', accounts.login);
 app.put('/api/accounts/:id', accounts.update);
 app.delete('/api/accounts/:id', accounts.delete);
 
