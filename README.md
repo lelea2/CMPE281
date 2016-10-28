@@ -4,6 +4,9 @@ Final project for CMPE281 -- Cloud technology
 ###### DB Command
 
 ```
+npm i --save sequelize
+npm i --save mysql
+
 sequelize init
 
 sequelize model:create --name=Author --attributes name:string,bio:text --underscored
@@ -13,7 +16,7 @@ sequelize model:create --name=Author --attributes name:string,bio:text --undersc
 ###### How to run application
 
 
-###### Create your .env filr for development
+###### Create your .env file for development
 
 ```
 DATABASE_URL=
