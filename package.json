@@ -4,7 +4,8 @@
   "description": "Project for on mobile sensor cluster",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -18,8 +19,13 @@
   "homepage": "https://github.com/lelea2/CMPE281#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "compression": "^1.6.2",
+    "cookie-parser": "^1.4.3",
+    "csrf-crypto": "^1.0.0",
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "html-minifier": "^3.1.0",
     "morgan": "^1.7.0",
     "mysql": "^2.11.1",
     "node-uuid": "^1.4.7",

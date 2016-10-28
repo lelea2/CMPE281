@@ -21,23 +21,52 @@ module.exports = {
       .then(function (newUser) {
         res.status(200).json(newUser);
       })
-      .catch(function (error){
+      .catch(function (error) {
         res.status(500).json(error);
       });
   },
 
   show(req, res) {
     User.findById(req.params.id)
-    .then(function (author) {
-      res.status(200).json(author);
+    .then(function (user) {
+      res.status(200).json(user);
     })
-    .catch(function (error){
+    .catch(function (error) {
       res.status(500).json(error);
     });
   },
 
+  login(req, res) {
+    var data = req.body;
+    User.findAll({
+      where: {
+        email: data.email
+      }
+    }).then(function(user) {
+      if (passwordHelpers.verifyPassword(data.password, user.password)) {
+        res.status(200).json(user);
+      } else {
+        res.status(500).json({
+          errorCode: 4003,
+          errorMessage: 'Invalid password'
+        });
+      }
+    }).catch(function(err) {
+      res.status(500).json(error);
+    })
+  },
+
   update(req, res) {
-    User.update(req.body, {
+    var data = req.body;
+    var reqBody = {
+      email: data.email,
+      firstName: data.firstName,
+      lastName: data.lastName
+    };
+    if (data.password) {
+      reqBody.password = passwordHelpers.hashPassword(data.password);
+    }
+    User.update(reqBody, {
       where: {
         id: req.params.id
       }
@@ -45,7 +74,7 @@ module.exports = {
     .then(function (updatedRecords) {
       res.status(200).json(updatedRecords);
     })
-    .catch(function (error){
+    .catch(function (error) {
       res.status(500).json(error);
     });
   },
@@ -59,7 +88,7 @@ module.exports = {
     .then(function (deletedRecords) {
       res.status(200).json(deletedRecords);
     })
-    .catch(function (error){
+    .catch(function (error) {
       res.status(500).json(error);
     });
   }
