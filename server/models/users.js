@@ -1,7 +1,5 @@
 'use strict';
 
-var passwordHash = require('password-hash');
-
 module.exports = function(sequelize, DataTypes) {
   var Users = sequelize.define('Users', {
     id: {

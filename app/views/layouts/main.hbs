@@ -2,18 +2,25 @@
 <html ng-app="cloudApp">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="http://www.ingresocloud.com/images/cld_ico1.png" type="image/x-icon" />
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/common.css">
   <title>CMPE 281 | Cloud Project</title>
 </head>
 <body>
 <!-- Wrap Begin -->
 <div class="wrap" ng-controller="cloudAppController">
-
+  {{> header}}
+  <div class="container">
+    {{{body}}}
+  </div>
   <div class="clear"></div>
   <input type="hidden" name="_csrf" value="{{_csrf}}" />
 </div>
 
-<script src="../lib/jquery/distjquery.min.js"></script>
+<script src="../lib/jquery/dist/jquery.min.js"></script>
 <script src="../lib/angular/angular.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- Wrap End -->
 </body>
 </html>

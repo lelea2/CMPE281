@@ -43,8 +43,8 @@ module.exports = {
         email: data.email
       }
     }).then(function(user) {
-      if (passwordHelpers.verifyPassword(data.password, user.password)) {
-        res.status(200).json(user);
+      if (passwordHelpers.verifyPassword(data.password, user[0].password)) {
+        res.status(200).json(user[0]);
       } else {
         res.status(500).json({
           errorCode: 4003,
@@ -72,7 +72,7 @@ module.exports = {
       }
     })
     .then(function (updatedRecords) {
-      res.status(200).json(updatedRecords);
+      res.status(200).json({});
     })
     .catch(function (error) {
       res.status(500).json(error);
@@ -86,7 +86,7 @@ module.exports = {
       }
     })
     .then(function (deletedRecords) {
-      res.status(200).json(deletedRecords);
+      res.status(200).json({});
     })
     .catch(function (error) {
       res.status(500).json(error);

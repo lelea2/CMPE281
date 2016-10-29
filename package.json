@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/lelea2/CMPE281#readme",
   "dependencies": {
+    "bcrypt": "^0.8.7",
     "body-parser": "^1.15.2",
     "compression": "^1.6.2",
     "cookie-parser": "^1.4.3",
@@ -29,7 +30,6 @@
     "morgan": "^1.7.0",
     "mysql": "^2.11.1",
     "node-uuid": "^1.4.7",
-    "password-hash": "^1.2.2",
     "save": "^2.3.0",
     "sequelize": "^3.24.6",
     "sequelize-cli": "^2.4.0",

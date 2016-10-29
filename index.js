@@ -20,7 +20,8 @@ var express = require('express'),
     expressHbs = require('express-handlebars'),
     bodyParser = require('body-parser'),
     routes = require('./app/routes'),
-    accounts = require('./server/controllers/accounts');
+    accounts = require('./server/controllers/accounts'),
+    payment = require('./server/controllers/payment');
 
 app.use(bodyParser.urlencoded({"extended": false}));
 app.use(bodyParser.json())
@@ -57,11 +58,17 @@ app.get('*', express.static(path.join(__dirname, 'public'), { maxAge: oneWeek })
 /*****************************************************/
 /***************** API Routing ***********************/
 /*****************************************************/
+
+//Account components
 app.get('/api/accounts/:id', accounts.show);
 app.post('/api/accounts', accounts.create);
 app.post('/api/login', accounts.login);
 app.put('/api/accounts/:id', accounts.update);
 app.delete('/api/accounts/:id', accounts.delete);
+
+//Billings components
+app.post('/api/payment', payment.create);
+app.put('/api/payment/:id', payment.update);
 
 /*****************************************************/
 /***************** Views Routing *********************/
