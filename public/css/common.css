@@ -22,3 +22,18 @@ body {
 .container {
   padding-top: 100px;
 }
+
+.btn,
+.btn:hover,
+.btn:focus,
+.btn:active {
+  background: #eeba37;
+  border: 1px solid #eeba37;
+}
+a,
+a:hover,
+a:focus,
+a:active {
+  color: #e47911;
+  cursor: pointer;
+}
