@@ -21,6 +21,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     routes = require('./app/routes'),
     accounts = require('./server/controllers/accounts'),
+    hosts = require('./server/controllers/hosts'),
     payment = require('./server/controllers/payment');
 
 app.use(bodyParser.urlencoded({"extended": false}));
@@ -70,11 +71,18 @@ app.delete('/api/accounts/:id', accounts.delete);
 app.post('/api/payment', payment.create);
 app.put('/api/payment/:id', payment.update);
 
+//Hosts components
+app.post('/api/hosts', hosts.create);
+app.get('/api/hosts', hosts.show);
+app.put('/api/hosts/:id', hosts.update);
+app.delete('/api/hosts/:id', hosts.delete);
+
 /*****************************************************/
 /***************** Views Routing *********************/
 /*****************************************************/
 app.get('/', routes.signin);
 app.get('/instances', routes.instances);
+app.get('/payment', routes.payment);
 
 
 app.set('port', process.env.PORT || 8000);

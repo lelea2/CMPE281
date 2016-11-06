@@ -1,0 +1,9 @@
+.form-payment {
+  max-width: 400px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-payment button {
+  margin: 15px auto;
+}

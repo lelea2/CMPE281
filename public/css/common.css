@@ -70,7 +70,13 @@ a:active {
   vertical-align: top;
   width: calc(100% - 300px);
   padding: 15px;
-  @media screen and (max-width: 480px) {
+}
+
+@media screen and (max-width: 729px) {
+  .left {
+    display: none !important;
+  }
+  .right {
     width: 100%;
   }
 }

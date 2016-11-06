@@ -36,3 +36,13 @@ exports.instances = function(req, res, next) {
     res.send(minifyHTML(html));
   });
 };
+
+exports.payment = function(req, res, next) {
+  res.render('payment', { title: 'Dashboard | Payment', layout: 'main' }, function (err, html) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    }
+    res.send(minifyHTML(html));
+  });
+};

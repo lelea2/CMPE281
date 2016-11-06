@@ -24,7 +24,7 @@ App.controller('signinController', ['$scope', '$http', function ($scope, $http) 
       headers : getHeaders(),
       data    : $scope.formSignupData
     }).then(function(data) {
-      window.location = '/billings'; //redirect to dashboard
+      window.location = '/payments'; //redirect to create payment
     }, function(err) {
     });
   };
