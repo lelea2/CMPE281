@@ -13,3 +13,10 @@ App.run(['$window', '$rootScope', function($window, $rootScope) {
     });
   }, false);
 }]);
+
+APP_CLOUD = function() {};
+APP_CLOUD.prototype.getHeaders = function() {
+  return {
+    'Content-Type': 'application/json'
+  }
+};

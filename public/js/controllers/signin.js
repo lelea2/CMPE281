@@ -9,7 +9,7 @@ App.controller('signinController', ['$scope', '$http', function ($scope, $http) 
     $http({
       method  : 'POST',
       url     : '/api/login',
-      headers : getHeaders(),
+      headers : APP_CLOUD.getHeaders(),
       data    : $scope.formSigninData
     }).then(function(data) {
       window.location = '/instances'; //redirect to dashboard
@@ -21,7 +21,7 @@ App.controller('signinController', ['$scope', '$http', function ($scope, $http) 
     $http({
       method  : 'POST',
       url     : '/api/accounts',
-      headers : getHeaders(),
+      headers : APP_CLOUD.getHeaders(),
       data    : $scope.formSignupData
     }).then(function(data) {
       window.location = '/payments'; //redirect to create payment
@@ -37,9 +37,4 @@ App.controller('signinController', ['$scope', '$http', function ($scope, $http) 
     $scope.signinState = false;
   };
 
-  function getHeaders() {
-    return {
-      'Content-Type': 'application/json'
-    };
-  }
 }]);
