@@ -1,0 +1,9 @@
+.form-create-instance > div {
+  margin: 15px;
+  display: block;
+}
+
+.form-create-instance .submit-form {
+  margin: 15px;
+  width: 200px;
+}

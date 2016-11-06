@@ -15,11 +15,20 @@ function minifyHTML(html) {
 }
 
 
-/**
- * Display /sigin page
- */
+//Display signin page
 exports.signin = function(req, res, next) {
-  res.render('signin', { title: 'Signin', layout: 'main' }, function (err, html) {
+  res.render('signin', { title: 'Register', layout: 'main' }, function (err, html) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    }
+    res.send(minifyHTML(html));
+  });
+};
+
+//Display dashboard page
+exports.instances = function(req, res, next) {
+  res.render('instances', { title: 'Dashboard | Instance', layout: 'main' }, function (err, html) {
     if (err) {
       console.log(err);
       return next(err);

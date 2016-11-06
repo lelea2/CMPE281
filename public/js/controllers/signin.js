@@ -9,11 +9,11 @@ App.controller('signinController', ['$scope', '$http', function ($scope, $http) 
     $http({
       method  : 'POST',
       url     : '/api/login',
-      data    : $.param($scope.formSigninData)
+      headers : getHeaders(),
+      data    : $scope.formSigninData
     }).then(function(data) {
-      window.location = '/dashboard'; //redirect to dashboard
+      window.location = '/instances'; //redirect to dashboard
     }, function(err) {
-      alert('Fail to login. Please try again');
     });
   };
 
@@ -21,11 +21,11 @@ App.controller('signinController', ['$scope', '$http', function ($scope, $http) 
     $http({
       method  : 'POST',
       url     : '/api/accounts',
-      data    : $.param($scope.formSignupData)
+      headers : getHeaders(),
+      data    : $scope.formSignupData
     }).then(function(data) {
-      window.location = '/dashboard'; //redirect to dashboard
+      window.location = '/billings'; //redirect to dashboard
     }, function(err) {
-      alert('Fail to login. Please try again');
     });
   };
 
@@ -37,4 +37,9 @@ App.controller('signinController', ['$scope', '$http', function ($scope, $http) 
     $scope.signinState = false;
   };
 
+  function getHeaders() {
+    return {
+      'Content-Type': 'application/json'
+    };
+  }
 }]);
