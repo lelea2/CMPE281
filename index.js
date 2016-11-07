@@ -17,6 +17,7 @@ var express = require('express'),
     compression = require('compression'),
     cookieParser = require('cookie-parser'),
     csrfCrypto = require('csrf-crypto'),
+    security = require('./server/helpers/security'),
     expressHbs = require('express-handlebars'),
     bodyParser = require('body-parser'),
     routes = require('./app/routes'),
@@ -37,6 +38,12 @@ app.use(cookieParser('keycatboard'));
 //   }
 //   next();
 // });
+
+//Set up userId
+app.use(function(req, res, next) {
+  res.locals._userId = security.getUserId(req) || '';
+  next();
+});
 
 //Using handlebar helper on both client and server side
 //http://codyrushing.com/using-handlebars-helpers-on-both-client-and-server/
@@ -81,7 +88,7 @@ app.delete('/api/hosts/:id', hosts.delete);
 /***************** Views Routing *********************/
 /*****************************************************/
 app.get('/', routes.signin);
-app.get('/instances', routes.instances);
+app.get('/sensors', routes.sensors);
 app.get('/payment', routes.payment);
 
 

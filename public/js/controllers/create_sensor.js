@@ -1,4 +1,4 @@
-App.controller('instancesController', ['$scope', '$http', function ($scope, $http) {
+App.controller('createsensorController', ['$scope', '$http', function ($scope, $http) {
 
   $scope.sensorType = '';
   $scope.sensorStorge = '';

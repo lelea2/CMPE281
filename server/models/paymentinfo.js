@@ -6,7 +6,13 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       primaryKey: true
     },
-    userId: DataTypes.STRING,
+    userId: {
+      type: DataTypes.STRING,
+      references: {
+        model: 'Users', // Can be both a string representing the table name, or a reference to the model
+        key: 'id'
+      }
+    },
     card_number: DataTypes.STRING,
     card_owner: DataTypes.STRING,
     expiration_date: DataTypes.STRING,
@@ -14,7 +20,6 @@ module.exports = function(sequelize, DataTypes) {
     zip: DataTypes.STRING,
     state: DataTypes.STRING,
     country: DataTypes.STRING,
-    phone: DataTypes.STRING,
     isDefault: DataTypes.BOOLEAN
   }, {
     classMethods: {

@@ -3,7 +3,7 @@
 var Cookies = require('cookies'),
     crypto = require('crypto'),
     scheme = 'aes-256-cbc',
-    key = 'cmpe281secret';
+    key = 'cmpe281secret',
     USER_COOKIE = 'u',
     TTL = 15 * 24 * 3600 * 1000; //15 days
 
@@ -84,7 +84,7 @@ module.exports = (function() {
       if (userId === '' || userId.length !== 36) {
         next();
       } else {
-        res.redirect(302, '/create');
+        res.redirect(302, '/sensors');
       }
     };
   }

@@ -3,14 +3,16 @@
 var User = require('../models/').Users;
 var uuid = require('node-uuid');
 var passwordHelpers = require('../helpers/passwordHelpers');
+var security = require('../helpers/security');
 
 module.exports = {
 
   create(req, res) {
     var data = req.body;
     var hashPassword = passwordHelpers.hashPassword(data.password);
+    var userId =  uuid.v4();
     var reqBody = {
-      id: uuid.v4(),
+      id: userId,
       email: data.email,
       firstName: data.firstName,
       lastName: data.lastName,
@@ -19,6 +21,9 @@ module.exports = {
     };
     User.create(reqBody)
       .then(function (newUser) {
+        if (req.headers.setcookie === 'true') {
+          security.setUserCookie(req, newUser.id);
+        }
         res.status(200).json(newUser);
       })
       .catch(function (error) {
@@ -38,12 +43,16 @@ module.exports = {
 
   login(req, res) {
     var data = req.body;
+    console.log(req.headers);
     User.findAll({
       where: {
         email: data.email
       }
     }).then(function(user) {
       if (passwordHelpers.verifyPassword(data.password, user[0].password)) {
+        if (req.headers.setcookie === 'true') {
+          security.setUserCookie(req, user[0].id);
+        }
         res.status(200).json(user[0]);
       } else {
         res.status(500).json({

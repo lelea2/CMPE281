@@ -4,9 +4,8 @@ module.exports = {
     return queryInterface.createTable('PaymentInfo', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       id: {
         type: Sequelize.STRING
@@ -33,9 +32,6 @@ module.exports = {
         type: Sequelize.STRING
       },
       country: {
-        type: Sequelize.STRING
-      },
-      phone: {
         type: Sequelize.STRING
       },
       isDefault: {

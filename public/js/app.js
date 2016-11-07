@@ -14,9 +14,11 @@ App.run(['$window', '$rootScope', function($window, $rootScope) {
   }, false);
 }]);
 
-APP_CLOUD = function() {};
-APP_CLOUD.prototype.getHeaders = function() {
+APP_CLOUD = {};
+APP_CLOUD.getHeaders = function(setCookies) {
   return {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'setCookie': setCookies || false,
+    'u': ''
   }
 };

@@ -6,7 +6,11 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true
     },
     creator_id: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      references: {
+        model: 'Users', // Can be both a string representing the table name, or a reference to the model
+        key: 'id'
+      }
     },
     name: DataTypes.STRING,
     description: DataTypes.STRING,
@@ -16,6 +20,10 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+        Hosts.belongsTo(models.Users, {
+          onDelete: 'cascade',
+          onUpdate: 'cascade'
+        });
       }
     }
   });
