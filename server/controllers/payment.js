@@ -26,7 +26,7 @@ module.exports = {
       state: data.state,
       country: data.country,
       phone: data.phone,
-      isDefault: data.isDefault || false
+      isDefault: data.isDefault || true
     };
     PaymentInfo.create(reqBody)
       .then(function (paymenInfo) {

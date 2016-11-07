@@ -1,4 +1,4 @@
-window.App = angular.module('cloudApp', []);
+window.App = angular.module('cloudApp', ['ui.mask']);
 
 App.run(['$window', '$rootScope', function($window, $rootScope) {
   $rootScope.online = navigator.onLine;
