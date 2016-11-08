@@ -13,7 +13,8 @@ module.exports = {
       name: data.name,
       description: data.description,
       ip: randomip('192.168.2.0', 24),
-      status: data.status || true
+      status: data.status || true,
+      creator_id: req.headers.u
     };
     Host.create(reqBody)
       .then(function (newHost) {

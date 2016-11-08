@@ -23,6 +23,11 @@
         } else {
           return options.fn(this);
         }
+      },
+
+      //This is in order to maintain angular syntax
+      'raw-helper': function(options) {
+        return options.fn();
       }
     };
 

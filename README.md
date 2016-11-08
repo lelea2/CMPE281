@@ -24,3 +24,11 @@ DATABASE_NAME=
 DATABASE_USER=
 DATABASE_PW=
 ```
+
+##### Technology
+
+* MySQL
+* Sequelize
+* ExpressJS
+* Angular
+* HandleBar

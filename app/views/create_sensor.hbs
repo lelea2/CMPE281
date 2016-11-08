@@ -8,12 +8,12 @@
   <div>
     <form class="form-create-instance" ng-submit="createSensors()">
       <div>
-        <label for="inputEmail">Sensor Name</label>
+        <label for="inputName">Sensor Name</label>
         <input type="text" id="inputName" ng-model="formSensor.name" class="form-control" placeholder="Sensor name" required autofocus>
       </div>
       <div>
         <label for="inputDesc">Sensor Description</label>
-        <input type="text" id="inputFirstName" ng-model="formSensor.desc" class="form-control" placeholder="Sensor description" required>
+        <input type="text" id="inputDesc" ng-model="formSensor.desc" class="form-control" placeholder="Sensor description" required>
       </div>
       <div>
         {{> sensortype}}

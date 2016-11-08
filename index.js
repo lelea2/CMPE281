@@ -89,6 +89,8 @@ app.delete('/api/hosts/:id', hosts.delete);
 /*****************************************************/
 app.get('/', routes.signin);
 app.get('/sensors', routes.sensors);
+app.get('/create', routes.create);
+app.get('/hosts', routes.hosts);
 app.get('/payment', routes.payment);
 
 

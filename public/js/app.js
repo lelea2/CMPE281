@@ -14,11 +14,18 @@ App.run(['$window', '$rootScope', function($window, $rootScope) {
   }, false);
 }]);
 
+//Disable debug mode
+App.config(['$compileProvider', function ($compileProvider) {
+  $compileProvider.debugInfoEnabled(false);
+  // $compileProvider.commentDirectivesEnabled(false);
+  // $compileProvider.cssClassDirectivesEnabled(false);
+}]);
+
 APP_CLOUD = {};
 APP_CLOUD.getHeaders = function(setCookies) {
   return {
     'Content-Type': 'application/json',
     'setCookie': setCookies || false,
-    'u': ''
+    'u': $('input[name="_userId"]').val()
   }
 };

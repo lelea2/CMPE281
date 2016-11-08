@@ -49,6 +49,17 @@ exports.create = function(req, res, next) {
   });
 };
 
+//Display all hosts
+exports.hosts = function(req, res, next) {
+  res.render('hosts', { title: 'Dashboard | Hosts', layout: 'main' }, function (err, html) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    }
+    res.send(minifyHTML(html));
+  });
+};
+
 //Payment registration
 exports.payment = function(req, res, next) {
   res.render('payment', { title: 'Dashboard | Payment', layout: 'main' }, function (err, html) {

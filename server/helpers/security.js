@@ -25,7 +25,6 @@ module.exports = (function() {
     return decrypted;
   }
 
-
   /**
    * Function setting user cookie
    * @method  setUserCookie
