@@ -60,6 +60,28 @@ exports.hosts = function(req, res, next) {
   });
 };
 
+//Account management
+exports.account = function(req, res, next) {
+  res.render('account', { title: 'Dashboard | Account', layout: 'main' }, function (err, html) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    }
+    res.send(minifyHTML(html));
+  });
+};
+
+//Billings management
+exports.billings = function(req, res, next) {
+  res.render('billings', { title: 'Dashboard | Billings', layout: 'main' }, function (err, html) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    }
+    res.send(minifyHTML(html));
+  });
+};
+
 //Payment registration
 exports.payment = function(req, res, next) {
   res.render('payment', { title: 'Dashboard | Payment', layout: 'main' }, function (err, html) {

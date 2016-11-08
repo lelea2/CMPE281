@@ -91,7 +91,9 @@ app.get('/', routes.signin);
 app.get('/sensors', routes.sensors);
 app.get('/create', routes.create);
 app.get('/hosts', routes.hosts);
-app.get('/payment', routes.payment);
+app.get('/account', routes.account);
+app.get('/payment/create', routes.payment);
+app.get('/billings', routes.billings);
 
 
 app.set('port', process.env.PORT || 8000);
