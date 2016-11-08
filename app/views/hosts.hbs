@@ -23,9 +23,9 @@
           <td>{{bus.name}}</td>
           <td>{{bus.description}}</td>
           <td>{{bus.ip}}</td>
-          <td>{{bus.status}}</td>
-          <td>{{bus.updatedAt}}</td>
-          <td></td>
+          <td>{{convertStatus(bus.status)}}</td>
+          <td>{{convertTime(bus.updatedAt)}}</td>
+          <td><button ng-click="handleHostStatus(bus.status)" class="btn btn-sm">{{btnStatus(bus.status)}}</button></td>
         </tr>
       </tbody>
     </table>

@@ -10,7 +10,7 @@ App.controller('hostsController', ['$scope', '$http', function ($scope, $http) {
       headers : APP_CLOUD.getHeaders(true),
       data    : $scope.formBus
     }).then(function(data) {
-      window.location = '/hosts'; //redirect to create payment
+      // window.location = '/hosts'; //redirect to create payment
     }, function(err) {
     });
   };
@@ -25,6 +25,23 @@ App.controller('hostsController', ['$scope', '$http', function ($scope, $http) {
       // console.log(resp.data);
       $scope.buses = resp.data;
     });
+  };
+
+  $scope.handleHostStatus = function() {
+
+  };
+
+  $scope.convertTime = function(date) {
+    var d = new Date(date);
+    return (d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear();
+  };
+
+  $scope.convertStatus = function(status) {
+    return (status === true) ? 'On' : 'Off';
+  };
+
+  $scope.btnStatus = function(status) {
+    return 'Turn ' + ((status === true) ? 'Off' : 'On');
   };
 
 }]);
