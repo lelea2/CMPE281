@@ -16,7 +16,6 @@ App.controller('hostsController', ['$scope', '$http', function ($scope, $http) {
   };
 
   $scope.init = function() {
-    $scope.buses = [];
     $http({
       method: 'GET',
       headers: APP_CLOUD.getHeaders(true),

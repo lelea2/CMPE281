@@ -23,7 +23,9 @@ var express = require('express'),
     routes = require('./app/routes'),
     accounts = require('./server/controllers/accounts'),
     hosts = require('./server/controllers/hosts'),
-    payment = require('./server/controllers/payment');
+    payment = require('./server/controllers/payment'),
+    sensors = require('./server/controllers/sensors');
+
 
 app.use(bodyParser.urlencoded({"extended": false}));
 app.use(bodyParser.json())
@@ -83,6 +85,9 @@ app.post('/api/hosts', hosts.create);
 app.get('/api/hosts', hosts.show);
 app.put('/api/hosts/:id', hosts.update);
 app.delete('/api/hosts/:id', hosts.delete);
+
+//Sensors component
+app.get('/api/sensors/types', sensors.type);
 
 /*****************************************************/
 /***************** Views Routing *********************/

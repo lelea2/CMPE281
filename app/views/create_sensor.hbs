@@ -1,12 +1,19 @@
 <link rel="stylesheet" type="text/css" href="../css/instances.css">
 {{> leftrail}}
-<div class="right" ng-controller="createsensorController">
+{{{{raw-helper}}}}
+<div class="right" ng-controller="createSensorController" ng-init="init()">
   <div class="heading-section">
     <h3>Create Sensor</h3>
     <p>Create a new sensor with pre-configured type provided by app</p>
   </div>
   <div>
     <form class="form-create-instance" ng-submit="createSensors()">
+      <div>
+        <label class="emulator-option" ng-repeat="choice in choices">
+          <input type="radio" name="isEmulator" ng-model="formSensor.isEmulator" value="true" />
+            {{choice.text}}
+        </label>
+      </div>
       <div>
         <label for="inputName">Sensor Name</label>
         <input type="text" id="inputName" ng-model="formSensor.name" class="form-control" placeholder="Sensor name" required autofocus>
@@ -16,22 +23,27 @@
         <input type="text" id="inputDesc" ng-model="formSensor.desc" class="form-control" placeholder="Sensor description" required>
       </div>
       <div>
-        {{> sensortype}}
+      <div class="form-group storage-type">
+          <label for="sel1">Select sensor type:</label>
+          <select class="form-control" ng-model="formSensor.type">
+            <option ng-repeat="type in sensors_type" value={{type.id}}>{{type.type}}</option>
+          </select>
+        </div>
       </div>
       <div>
-        <div class="dropdown storage-type">
-          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Select storage
-          <span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a onClick="handleStorage('2G')">2G</a></li>
-            <li><a onClick="handleStorage('4G')">4G</a></li>
-            <li><a onClick="handleStorage('8G')">8G</a></li>
-            <li><a onClick="handleStorage('16G')">16G</a></li>
-          </ul>
+        <div class="form-group storage-type">
+          <label for="sel1">Select storage type:</label>
+          <select class="form-control" ng-model="formSensor.storage">
+            <option value="2">2G</option>
+            <option value="4">4G</option>
+            <option value="6">6G</option>
+            <option value="8">8G</option>
+          </select>
         </div>
       </div>
       <button type="submit" class="btn btn-primary submit-form">Create Sensor</button>
     </form>
   </div>
 </div>
+{{{{/raw-helper}}}}
 <script src="../js/controllers/create_sensor.js"></script>

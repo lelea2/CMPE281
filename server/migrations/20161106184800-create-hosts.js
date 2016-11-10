@@ -6,9 +6,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.STRING
       },
-      id: {
-        type: Sequelize.STRING
-      },
       creator_id {
         type: Sequelize.STRING
       },
