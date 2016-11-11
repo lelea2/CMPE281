@@ -15,6 +15,14 @@ sequelize model:create --name=Author --attributes name:string,bio:text --undersc
 
 ###### How to run application
 
+```
+//Install node from https://nodejs.org/en/download/
+
+npm i
+PORT=8000 nodemon index.js
+
+```
+
 
 ###### Create your .env file for development
 
