@@ -60,6 +60,17 @@ exports.hosts = function(req, res, next) {
   });
 };
 
+//Display all hubs
+exports.hubs = function(req, res, next) {
+  res.render('hubs', { title: 'Dashboard | Hubs', layout: 'main' }, function (err, html) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    }
+    res.send(minifyHTML(html));
+  });
+};
+
 //Account management
 exports.account = function(req, res, next) {
   res.render('account', { title: 'Dashboard | Account', layout: 'main' }, function (err, html) {
