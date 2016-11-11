@@ -88,11 +88,24 @@ module.exports = (function() {
     };
   }
 
+  function userRequiredLoggedIn() {
+    return function (req, res, next) {
+      var userId = getUserId(req);
+      if (userId !== '') {
+        next();
+      } else {
+        res.redirect(302, '/signin');
+      }
+    };
+  }
+
   /** Interface for user class **/
   return {
     setUserCookie: setUserCookie,
     getUserId: getUserId,
-    logout: logout
+    logout: logout,
+    userAuthenticated: userAuthenticated,
+    userRequiredLoggedIn: userRequiredLoggedIn
   };
 
 }());

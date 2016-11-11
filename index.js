@@ -92,14 +92,14 @@ app.get('/api/sensors/types', sensors.type);
 /*****************************************************/
 /***************** Views Routing *********************/
 /*****************************************************/
-app.get('/', routes.signin);
-app.get('/sensors', routes.sensors);
-app.get('/create', routes.create);
-app.get('/hosts', routes.hosts);
-app.get('/account', routes.account);
-app.get('/payment/create', routes.payment);
-app.get('/billings', routes.billings);
-
+app.get('/signin', security.userAuthenticated(), routes.signin);
+app.get('/', security.userAuthenticated(), routes.signin);
+app.get('/sensors', security.userRequiredLoggedIn(), routes.sensors);
+app.get('/create', security.userRequiredLoggedIn(), routes.create);
+app.get('/hosts', security.userRequiredLoggedIn(), routes.hosts);
+app.get('/account', security.userRequiredLoggedIn(), routes.account);
+app.get('/payment/create', security.userRequiredLoggedIn(), routes.payment);
+app.get('/billings', security.userRequiredLoggedIn(), routes.billings);
 
 app.set('port', process.env.PORT || 8000);
 app.listen(app.get('port'), function () {
