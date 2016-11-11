@@ -23,7 +23,12 @@ App.controller('createSensorController', ['$scope', '$http', function ($scope, $
   };
 
   $scope.createSensors = function() {
+    console.log($scope.formSensor);
+    $http({
 
+    }).then(function(resp) {
+
+    });
   };
 
 }]);
