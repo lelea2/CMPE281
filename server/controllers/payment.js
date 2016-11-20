@@ -19,7 +19,7 @@ module.exports = {
       id: uuid.v4(),
       userId: userId,
       card_number: data.card_number,
-      card_onwer: data.card_onwer,
+      card_owner: data.card_onwer,
       expiration_date: data.expiration_date,
       address: data.address,
       zip: data.zip,
