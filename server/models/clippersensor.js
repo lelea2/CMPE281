@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var TemperatureSensors = sequelize.define('TemperatureSensors', {
+  var ClipperSensors = sequelize.define('ClipperSensors', {
     id: {
       type: DataTypes.STRING,
       primaryKey: true
@@ -12,8 +12,7 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
-    temperature: DataTypes.DECIMAL(10, 2),
-    max_temperature: DataTypes.DECIMAL(10, 2)
+    count: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
@@ -22,5 +21,5 @@ module.exports = function(sequelize, DataTypes) {
     },
     timestamps: false
   });
-  return TemperatureSensors;
+  return ClipperSensors;
 };

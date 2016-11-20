@@ -1,13 +1,14 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var SensorHubs = sequelize.define('SensorHubs', {
+  var PaymentHistory = sequelize.define('PaymentHistory', {
     id: {
       type: DataTypes.STRING,
       primaryKey: true
     },
-    status: DataTypes.BOOLEAN,
-    city: DataTypes.STRING,
-    route: DataTypes.STRING
+    userId: DataTypes.STRING,
+    billingId: DataTypes.STRING,
+    paymentInfoId: DataTypes.STRING,
+    paid_time: DataTypes.DATE
   }, {
     classMethods: {
       associate: function(models) {
@@ -16,5 +17,5 @@ module.exports = function(sequelize, DataTypes) {
     },
     timestamps: false
   });
-  return SensorHubs;
+  return PaymentHistory;
 };

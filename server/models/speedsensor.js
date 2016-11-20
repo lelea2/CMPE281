@@ -1,6 +1,7 @@
 'use strict';
+
 module.exports = function(sequelize, DataTypes) {
-  var ImageSensors = sequelize.define('ImageSensors', {
+  var TemperatureSensors = sequelize.define('TemperatureSensors', {
     id: {
       type: DataTypes.STRING,
       primaryKey: true
@@ -12,8 +13,8 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
-    count_of_passenger: DataTypes.INTEGER,
-    max_seat: DataTypes.INTEGER
+    speed: DataTypes.DECIMAL(10, 2),
+    timestamp: DataTypes.DATE
   }, {
     classMethods: {
       associate: function(models) {
@@ -22,5 +23,5 @@ module.exports = function(sequelize, DataTypes) {
     },
     timestamps: false
   });
-  return ImageSensors;
+  return TemperatureSensors;
 };

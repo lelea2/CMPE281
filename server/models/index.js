@@ -18,6 +18,14 @@ var db        = {};
 //     dialect: 'mysql'
 // });
 
+//database wide options
+// var opts = {
+//     define: {
+//         //prevent sequelize from pluralizing table names
+//         freezeTableName: true
+//     }
+// }
+
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {

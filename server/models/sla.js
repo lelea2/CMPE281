@@ -1,13 +1,15 @@
 'use strict';
+
 module.exports = function(sequelize, DataTypes) {
-  var SensorHubs = sequelize.define('SensorHubs', {
+  var SLA = sequelize.define('SLA', {
     id: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       primaryKey: true
     },
-    status: DataTypes.BOOLEAN,
-    city: DataTypes.STRING,
-    route: DataTypes.STRING
+    description: DataTypes.STRING,
+    user_rate: DataTypes.DECIMAL(10, 2),
+    vendor_rate: DataTypes.DECIMAL(10, 2),
+    admin_rate: DataTypes.DECIMAL(10, 2)
   }, {
     classMethods: {
       associate: function(models) {
@@ -16,5 +18,5 @@ module.exports = function(sequelize, DataTypes) {
     },
     timestamps: false
   });
-  return SensorHubs;
+  return SLA;
 };

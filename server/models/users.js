@@ -14,6 +14,7 @@ module.exports = function(sequelize, DataTypes) {
     lastName: DataTypes.STRING,
     password: DataTypes.STRING,
     isAdmin: DataTypes.BOOLEAN,
+    roles: DataTypes.ENUM('admin','vendor', 'customer'),
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
   }, {

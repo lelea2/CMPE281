@@ -2,7 +2,10 @@
 
 var SensorType = require('../models/').SensorTypes;
 var Sensors = require('../models/').Sensors;
-var Users_Sensors = require('../models/').Users_Sensors;
+var ClipperSensor = require('../models/').ClipperSensors;
+var SpeedSensor = require('../models/').SpeedSensors;
+var LocationSensor = require('../models/').LocationSensors;
+var TemperatureSensor = require('../models/').TemperatureSensors;
 var uuid = require('node-uuid');
 
 module.exports = {

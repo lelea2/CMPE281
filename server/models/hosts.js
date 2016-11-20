@@ -15,7 +15,14 @@ module.exports = function(sequelize, DataTypes) {
     name: DataTypes.STRING,
     description: DataTypes.STRING,
     status: DataTypes.BOOLEAN,
-    ip: DataTypes.STRING
+    ip: DataTypes.STRING,
+    sensorhub_id: {
+      type: DataTypes.STRING,
+      references: {
+        model: 'SensorHubs', // Can be both a string representing the table name, or a reference to the model
+        key: 'id'
+      }
+    }
   }, {
     classMethods: {
       associate: function(models) {
@@ -24,3 +31,4 @@ module.exports = function(sequelize, DataTypes) {
   });
   return Hosts;
 };
+

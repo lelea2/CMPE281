@@ -16,14 +16,21 @@ module.exports = function(sequelize, DataTypes) {
     status: DataTypes.BOOLEAN,
     name: DataTypes.STRING,
     description: DataTypes.STRING,
-    sensor_hub_id: {
+    storages: DataTypes.ENUM('2G', '4G', '8G', '16G'),
+    provider_id: {
       type: DataTypes.STRING,
       references: {
-        model: 'SensorHubs',
+        model: 'Users', // Can be both a string representing the table name, or a reference to the model
         key: 'id'
       }
     },
-    storages: DataTypes.ENUM('2G', '4G', '8G', '16G')
+    host_id: {
+      type: DataTypes.STRING,
+      references: {
+        model: 'Hosts', // Can be both a string representing the table name, or a reference to the model
+        key: 'id'
+      }
+    }
   }, {
     classMethods: {
       associate: function(models) {

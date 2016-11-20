@@ -24,7 +24,7 @@ PORT=8000 nodemon index.js
 ```
 
 
-###### Create your .env file for development
+###### Create your .env file in the main folder for development
 
 ```
 DATABASE_URL=
