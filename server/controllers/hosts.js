@@ -26,7 +26,12 @@ module.exports = {
   },
 
   show(req, res) {
-    Host.findAll()
+    var userId = req.headers.u || '';
+    Host.findAll({
+      where: {
+        creator_id: userId = req.headers.u || ''
+      }
+    })
     .then(function (hosts) {
       res.status(200).json(hosts);
     })
