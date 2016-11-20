@@ -30,6 +30,22 @@ module.exports = {
       });
   },
 
+  //Show sensor
+  show(req, res) {
+    var userId = req.headers.u || '';
+    Sensors.findAll({
+      where: {
+        providerId: userId
+      }
+    })
+    .then(function (sensors) {
+      res.status(200).json(sensors);
+    })
+    .catch(function (error) {
+      res.status(500).json(error);
+    });
+  },
+
   type(req, res) {
     SensorType.findAll().then(function(types) {
       res.status(200).json(types);

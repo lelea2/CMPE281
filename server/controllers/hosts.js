@@ -29,7 +29,7 @@ module.exports = {
     var userId = req.headers.u || '';
     Host.findAll({
       where: {
-        creator_id: userId = req.headers.u || ''
+        creator_id: userId
       }
     })
     .then(function (hosts) {
