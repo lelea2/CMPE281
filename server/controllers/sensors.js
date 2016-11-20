@@ -23,7 +23,8 @@ module.exports = {
     };
     Sensors.create(reqBody)
       .then(function (newSensor) {
-        console.log(newSensor);
+        // console.log(newSensor);
+        res.status(200).json(newSensor);
       })
       .catch(function (error) {
         res.status(500).json(error);
