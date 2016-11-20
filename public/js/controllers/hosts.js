@@ -11,6 +11,7 @@ App.controller('hostsController', ['$scope', '$http', function ($scope, $http) {
       data    : $scope.formBus
     }).then(function(data) {
       // window.location = '/hosts'; //redirect to create payment
+      window.location.reload(true);
     }, function(err) {
     });
   };
