@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="../css/signin.css">
+{{{{raw-helper}}}}
 <div ng-controller="signinController">
   <form class="form-signin" ng-submit="processSignin()" ng-show="signinState">
     <h2 class="form-signin-heading">Sign in</h2>
@@ -42,9 +43,10 @@
     <input type="password" id="inputPassword" ng-model="formSignupData.password" class="form-control" placeholder="Password" required>
     <label for="inputConfirmPassword" class="sr-only">Confirm Password</label>
     <input type="password" id="inputConfirmPassword" ng-model="formSignupData.confirm_password" class="form-control" placeholder="Confirmed Password" required>
-    <p class="error" ng-show="errorState">{errorMessage}</p>
+    <p class="error" ng-show="errorState">{{errorMessage}}</p>
     <p>Already has an account? <a ng-click="showSignin()">Sign in</a></p>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
   </form>
 </div>
+{{{{/raw-helper}}}}
 <script src="../js/controllers/signin.js"></script>
