@@ -102,6 +102,11 @@ app.get('/hubs', security.userRequiredLoggedIn(), routes.hubs);
 app.get('/account', security.userRequiredLoggedIn(), routes.account);
 app.get('/payment/create', security.userRequiredLoggedIn(), routes.payment);
 app.get('/billings', security.userRequiredLoggedIn(), routes.billings);
+//Log user out
+app.get('/logout', function(req, res) {
+  security.logout(req);
+  res.redirect(302, '/');
+});
 
 app.set('port', process.env.PORT || 8000);
 app.listen(app.get('port'), function () {

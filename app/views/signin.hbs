@@ -40,6 +40,9 @@
     <input type="text" id="inputLastName" ng-model="formSignupData.lastName" class="form-control" placeholder="Last name" required>
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" id="inputPassword" ng-model="formSignupData.password" class="form-control" placeholder="Password" required>
+    <label for="inputConfirmPassword" class="sr-only">Confirm Password</label>
+    <input type="password" id="inputConfirmPassword" ng-model="formSignupData.confirm_password" class="form-control" placeholder="Confirmed Password" required>
+    <p class="error" ng-show="errorState">{errorMessage}</p>
     <p>Already has an account? <a ng-click="showSignin()">Sign in</a></p>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
   </form>

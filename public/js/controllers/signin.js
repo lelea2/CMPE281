@@ -4,6 +4,8 @@ App.controller('signinController', ['$scope', '$http', function ($scope, $http) 
   $scope.formSignupData = {};
 
   $scope.signinState = true;
+  $scope.errorState = false;
+  $scope.errorMessage = '';
 
   $scope.processSignin = function() {
     $http({
@@ -18,6 +20,14 @@ App.controller('signinController', ['$scope', '$http', function ($scope, $http) 
   };
 
   $scope.processSignup = function() {
+    $scope.errorState = false;
+    $scope.errorMessage = '';
+
+    var formSignupData = $scope.formSignupData;
+    if (formSignupData.confirm_password === formSignupData.password) {
+      $scope.errorMessage = 'Please enter matching password';
+      $scope.errorState = true;
+    }
     $http({
       method  : 'POST',
       url     : '/api/accounts',
@@ -26,6 +36,8 @@ App.controller('signinController', ['$scope', '$http', function ($scope, $http) 
     }).then(function(data) {
       window.location = '/payment/create'; //redirect to create payment
     }, function(err) {
+      $scope.errorMessage = 'Error signup. Please try again';
+      $scope.errorState = true;
     });
   };
 
