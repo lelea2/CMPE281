@@ -1,24 +1,30 @@
-<div class="visible-md visible-lg left" ng-controller="leftRailController">
-  <h4>Dashboard</h4>
-  <div class="item">
-    <p><strong>Bus</strong></p>
-    <a href="/hosts">Manage Bus</a>
-  </div>
-  <div class="item">
-    <p><strong>Sensors</strong></p>
-    <a href="/create">Create sensor</a>
-    <a href="/sensors">Manage sensor</a>
-    <!--<a href="/hub">Provision sensor</a>-->
-  </div>
-  <div class="item">
-    <p><strong>Billings</strong></p>
-    <a href="/usages">Usage Reports</a>
-    <a href="/billings">Billing History</a>
-    <a href="/payments">Payment History</a>
-  </div>
-  <div class="item">
-    <p><strong>Accounts</strong></p>
-    <a href="/account">Manage Account</a>
-  </div>
+<div class="visible-md visible-lg left" ng-controller="leftRailController" data-ng-init="init()">
+  {{{{raw-helper}}}}
+    <div class="welcome-message">
+      <strong><i>Hi, {{accountData.roles}}</i></strong>
+      <p>Khanh Dao</p>
+    </div>
+    <h4>Dashboard</h4>
+    <div class="item">
+      <p><strong>Bus</strong></p>
+      <a href="/hosts">Manage Bus</a>
+    </div>
+    <div class="item">
+      <p><strong>Sensors</strong></p>
+      <a href="/create">Create sensor</a>
+      <a href="/sensors">Manage sensor</a>
+      <!--<a href="/hub">Provision sensor</a>-->
+    </div>
+    <div class="item">
+      <p><strong>Billings</strong></p>
+      <a href="/usages">Usage Reports</a>
+      <a href="/billings">Billing History</a>
+      <a href="/payments">Payment History</a>
+    </div>
+    <div class="item">
+      <p><strong>Accounts</strong></p>
+      <a href="/account">Manage Account</a>
+    </div>
+  {{{{/raw-helper}}}}
 </div>
 <script src="../js/controllers/left_rail.js"></script>

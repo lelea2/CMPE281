@@ -16,7 +16,7 @@ module.exports = {
       email: data.email,
       firstName: data.firstName,
       lastName: data.lastName,
-      roles: data.role,
+      roles: data.role || 'customer',
       password: hashPassword,
       isAdmin: data.isAdmin || false
     };

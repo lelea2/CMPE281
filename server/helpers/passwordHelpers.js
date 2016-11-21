@@ -14,8 +14,8 @@ module.exports = {
   },
 
   verifyPassword: function(plainText, hashText) {
-    console.log(plainText);
-    console.log(hashText);
+    // console.log(plainText);
+    // console.log(hashText);
     return bcrypt.compareSync(plainText, hashText);
   }
 
