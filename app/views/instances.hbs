@@ -1,9 +1,33 @@
 <link rel="stylesheet" type="text/css" href="../css/instances.css">
 {{> leftrail}}
-<div class="right" ng-controller="sensorsController">
+<div class="right" ng-controller="sensorsController" data-ng-init="init()">
   <div class="heading-section">
     <h3>Available Sensors</h3>
     <p>You are using the following sensors</p>
+  </div>
+  <div>
+    {{{{raw-helper}}}}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Storage</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="sensor in sensors">
+          <td>{{sensor.name}}</td>
+          <td>{{convertType(sensor.type)}}</td>
+          <td>{{sensor.description}}</td>
+          <td>{{sensor.storages}}</td>
+          <td><button ng-click="handleDetail(sensor.id)" class="btn btn-sm">View Detail</button></td>
+        </tr>
+      </tbody>
+    </table>
+    {{{{/raw-helper}}}}
   </div>
   <a class="btn btn-primary" href="/create">Create Sensor</a>
 </div>

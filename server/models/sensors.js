@@ -12,7 +12,6 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
-    isEmulator: DataTypes.BOOLEAN,
     status: DataTypes.BOOLEAN,
     name: DataTypes.STRING,
     description: DataTypes.STRING,
@@ -36,7 +35,8 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         // associations can be defined here
       }
-    }
+    },
+    underscored: true
   });
   return Sensors;
 };

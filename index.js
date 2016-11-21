@@ -89,6 +89,7 @@ app.delete('/api/hosts/:id', hosts.delete);
 //Sensors component
 app.get('/api/sensors/types', sensors.type);
 app.get('/api/sensors', sensors.show); //show sensor per userId
+app.post('/api/sensors', sensors.create);
 
 /*****************************************************/
 /***************** Views Routing *********************/

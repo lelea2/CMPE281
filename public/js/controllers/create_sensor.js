@@ -34,11 +34,17 @@ App.controller('createSensorController', ['$scope', '$http', function ($scope, $
 
   $scope.createSensors = function() {
     console.log($scope.formSensor);
+    $scope.formSensor.type = parseInt($scope.formSensor.type, 10);
     $http({
-
-    }).then(function(resp) {
-
+      method: 'POST',
+      headers: APP_CLOUD.getHeaders(true),
+      url: '/api/sensors',
+      data: $scope.formSensor
+    }).then(function(data) {
+      window.location = "/sensors";
+    }, function(err) {
+      //handling error
+      alert('Create Sensor failed. Please try again.');
     });
   };
-
 }]);
