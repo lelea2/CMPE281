@@ -19,6 +19,12 @@ body {
   color: #fff;
 }
 
+.navbar .navbar-right {
+  margin-right: 0 !important;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
 .container {
   padding-top: 100px;
 }
