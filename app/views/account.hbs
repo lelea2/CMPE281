@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="../css/account.css">
 {{> leftrail}}
-<div class="right" ng-controller="accountController">
+<div class="right" ng-controller="accountController" ng-init="init()">
   <div class="heading-section">
     <h3>Manage Account</h3>
     <p>Manage your account information</p>
@@ -16,6 +16,10 @@
     <input type="text" id="inputFirstName" ng-model="formAccountData.firstName" class="form-control" placeholder="First name" required>
     <label for="inputLastName">Last name</label>
     <input type="text" id="inputLastName" ng-model="formAccountData.lastName" class="form-control" placeholder="Last name" required>
+    <br />
+    <p class="error" ng-show="errorState" ng-bind="errorMessage"></p>
+    <br />
+    <button type="submit" class="btn btn-primary">Update Account</button>
   </form>
 </div>
 <script src="../js/controllers/account.js"></script>
