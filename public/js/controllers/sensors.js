@@ -19,4 +19,13 @@ App.controller('sensorsController', ['$scope', '$http', function ($scope, $http)
     return types[type + 1];
   };
 
+  $scope.convertStatus = function(status) {
+    return (status === true || status === 1) ? 'On' : 'Off';
+  };
+
+  //Function handle physical sensor status
+  $scope.handleStatus = function(id) {
+
+  };
+
 }]);
