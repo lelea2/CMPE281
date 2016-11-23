@@ -27,8 +27,7 @@ function createSensorDetail(newSensor, type, res) {
     };
     LocationSensor.create(data)
       .then(function (detailSensor) {
-        console.log('Error adding detail sensor');
-        res.status(201).json(newSensor);
+        res.status(201).json(detailSensor);
       })
       .catch(function (error) {
         res.status(500).json(error);
