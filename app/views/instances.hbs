@@ -24,8 +24,8 @@
           <td>{{convertType(sensor.type)}}</td>
           <td>{{sensor.description}}</td>
           <td>{{sensor.storages}}</td>
-          <td><button ng-click="handleStatus(sensor.id)" class="btn btn-sm">{{convertStatus(sensor.status)}}</button></td>
-          <td><button ng-click="handleDetail(sensor.id)" class="btn btn-sm">View Detail</button></td>
+          <td><button ng-click="handleStatus(sensor.id, sensor.status)" class="btn btn-sm">{{convertStatus(sensor.status)}}</button></td>
+          <td><button ng-click="handleDetail(sensor.id, sensor.status)" class="btn btn-sm">View Detail</button></td>
         </tr>
       </tbody>
     </table>

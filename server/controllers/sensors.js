@@ -109,6 +109,25 @@ module.exports = {
       });
   },
 
+  //Turn on, off phyiscal sensor
+  update(req, res) {
+    var data = req.body;
+    var reqBody = {
+      status: (data.status === true) ? true : false
+    };
+    Sensors.update(reqBody, {
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(function (updatedRecords) {
+      res.status(200).json({});
+    })
+    .catch(function (error) {
+      res.status(500).json(error);
+    });
+  },
+
   //Show sensor
   show(req, res) {
     var userId = req.headers.u || '';

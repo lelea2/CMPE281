@@ -25,8 +25,18 @@ App.controller('sensorsController', ['$scope', '$http', function ($scope, $http)
   };
 
   //Function handle physical sensor status
-  $scope.handleStatus = function(id) {
-
+  $scope.handleStatus = function(id, status) {
+    $http({
+      method: 'POST',
+      headers: APP_CLOUD.getHeaders(true),
+      url: '/api/sensors/' + id + '/status',
+      data: {
+        status: (status === true || status === 1) ? false : true
+      }
+    }).then(function(resp) {
+      alert('Update Status sucessfully');
+      window.location.reload();
+    });
   };
 
 }]);
