@@ -24,10 +24,11 @@ App.controller('signinController', ['$scope', '$http', function ($scope, $http) 
     $scope.errorMessage = '';
 
     var formSignupData = $scope.formSignupData;
-    if (formSignupData.confirm_password === formSignupData.password) {
-      $scope.errorMessage = 'Please enter matching password';
-      $scope.errorState = true;
-    }
+    // if (formSignupData.confirm_password !== formSignupData.password) {
+    //   $scope.errorMessage = 'Please enter matching password';
+    //   $scope.errorState = true;
+    //   return;
+    // }
     $http({
       method  : 'POST',
       url     : '/api/accounts',
