@@ -16,7 +16,8 @@ App.controller('sensorsController', ['$scope', '$http', function ($scope, $http)
   };
 
   $scope.convertType = function(type) {
-    return types[type + 1];
+    // console.log(type);
+    return types[type - 1];
   };
 
   $scope.convertStatus = function(status) {
