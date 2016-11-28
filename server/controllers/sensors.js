@@ -137,7 +137,31 @@ module.exports = {
       }
     })
     .then(function (sensors) {
-      res.status(200).json(sensors);
+      var clipper = 0,
+          location = 0,
+          speed = 0,
+          temperature = 0;
+      for (var i = 0; i < sensors.length; i++) {
+        var type = sensors[i].type;
+        if (type === 1) {
+          location++;
+        } else if (type === 2) {
+          clipper++;
+        } else if (type === 3) {
+          speed++;
+        } else {
+          temperature++;
+        }
+      }
+      res.status(200).json({
+        data: sensors,
+        metadata: {
+          location: location,
+          clipper: clipper,
+          speed: speed,
+          temperature: temperature
+        }
+      });
     })
     .catch(function (error) {
       res.status(500).json(error);

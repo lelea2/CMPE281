@@ -22,10 +22,13 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     routes = require('./app/routes'),
     accounts = require('./server/controllers/accounts'),
+    billings = require('./server/controllers/billings'),
     route = require('./server/controllers/routes'),
+    hubs = require('./server/controllers/sensorhubs'),
     hosts = require('./server/controllers/hosts'),
     payment = require('./server/controllers/payment'),
-    sensors = require('./server/controllers/sensors');
+    sensors = require('./server/controllers/sensors'),
+    virtualsensors = require('./server/controllers/virtualsensors');
 
 
 app.use(bodyParser.urlencoded({"extended": false}));
@@ -78,24 +81,38 @@ app.put('/api/accounts/:id', accounts.update);
 app.delete('/api/accounts/:id', accounts.delete);
 
 //Billings components
+app.get('/api/payment', payment.show);
 app.post('/api/payment', payment.create);
 app.put('/api/payment/:id', payment.update);
 
 //Routes components
 app.get('/api/routes', route.show);
+app.get('/api/routes/:id', route.detail);
 app.post('/api/routes', route.create);
 
 //Hosts components
 app.post('/api/hosts', hosts.create);
 app.get('/api/hosts', hosts.show);
+app.get('/api/hosts/status', hosts.showstatus);
 app.put('/api/hosts/:id', hosts.update);
 app.delete('/api/hosts/:id', hosts.delete);
+
+//Hubs components
+app.get('/api/hubs', hubs.show);
+app.post('/api/hubs', hubs.create);
 
 //Sensors component
 app.get('/api/sensors/types', sensors.type);
 app.get('/api/sensors', sensors.show); //show sensor per userId
 app.post('/api/sensors', sensors.create);
 app.post('/api/sensors/:id/status', sensors.update);
+
+//Virtual sensor component
+app.post('/api/vsensor', virtualsensors.create);
+
+//Billings components
+app.get('/api/billings', billings.show);
+app.post('/api/billings', billings.create);
 
 /*****************************************************/
 /***************** Views Routing *********************/

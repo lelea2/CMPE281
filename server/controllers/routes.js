@@ -34,6 +34,17 @@ module.exports = {
     .catch(function (error) {
       res.status(500).json(error);
     });
+  },
+
+  detail(req, res) {
+    var userId = req.headers.u || '';
+    Routes.findById(req.params.id)
+    .then(function (route) {
+      res.status(200).json(route);
+    })
+    .catch(function (error) {
+      res.status(500).json(error);
+    });
   }
 
 };

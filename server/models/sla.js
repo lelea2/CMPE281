@@ -3,7 +3,7 @@
 module.exports = function(sequelize, DataTypes) {
   var SLA = sequelize.define('SLA', {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       primaryKey: true
     },
     description: DataTypes.STRING,

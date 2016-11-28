@@ -47,10 +47,18 @@
               <input type="text" id="inputDescription" ng-model="formBus.description" class="form-control" placeholder="Bus description" required>
               <br />
               <div class="form-group routes-type">
-                <label for="route-type">Select a route: </label>&nbsp;&nbsp;&nbsp;
+                <label for="route-type">Select a route: </label>
                 <div>
-                  <select class="form-control" ng-model="formBus.route">
+                  <select class="form-control" ng-model="formBus.route_id">
                     <option ng-repeat="route in routes" value={{route.id}}>{{route.description}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group hubs-type">
+                <label for="hub-type">Select a hub: </label>
+                <div>
+                  <select class="form-control" ng-model="formBus.sensorhub_id">
+                    <option ng-repeat="hub in hubs" value={{hub.id}}>{{hub.name}}</option>
                   </select>
                 </div>
               </div>

@@ -11,7 +11,7 @@ App.controller('sensorsController', ['$scope', '$http', function ($scope, $http)
       url: '/api/sensors'
     }).then(function(resp) {
       console.log(resp.data);
-      $scope.sensors = resp.data;
+      $scope.sensors = resp.data.data;
     });
   };
 

@@ -3,6 +3,7 @@ App.controller('hostsController', ['$scope', '$http', function ($scope, $http) {
   $scope.formBus = {};
   $scope.buses = [];
   $scope.routes = [];
+  $scope.hubs = [];
 
   $scope.createBus = function() {
     $http({
@@ -35,6 +36,15 @@ App.controller('hostsController', ['$scope', '$http', function ($scope, $http) {
     }).then(function(resp) {
       // console.log(resp.data);
       $scope.routes = resp.data;
+    });
+    //Get existing hubs
+    $http({
+      method: 'GET',
+      headers: APP_CLOUD.getHeaders(true),
+      url: '/api/hubs'
+    }).then(function(resp) {
+      // console.log(resp.data);
+      $scope.hubs = resp.data;
     });
   };
 

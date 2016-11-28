@@ -9,14 +9,7 @@ module.exports = function(sequelize, DataTypes) {
     status: DataTypes.BOOLEAN,
     name: DataTypes.STRING,
     description: DataTypes.STRING,
-    storages: DataTypes.ENUM('2G', '4G', '8G', '16G'),
-    user_id: {
-      type: DataTypes.STRING,
-      references: {
-        model: 'Users',
-        key: 'id'
-      }
-    }
+    storages: DataTypes.ENUM('2G', '4G', '8G', '16G')
   }, {
     classMethods: {
       associate: function(models) {

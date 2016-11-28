@@ -31,6 +31,7 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         // console.log(models)
         Hosts.belongsTo(models.Routes, {foreignKey: 'route_id'})
+        Hosts.belongsTo(models.SensorHubs, {foreignKey: 'sensorhub_id'})
       }
     }
   });

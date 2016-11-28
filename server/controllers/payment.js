@@ -69,5 +69,19 @@ module.exports = {
     .catch(function (error) {
       res.status(500).json(error);
     });
+  },
+
+  show(req, res) {
+    PaymentInfo.findAll({
+      where: {
+        userId: req.headers.u
+      }
+    })
+    .then(function (paymentInfos) {
+      res.status(200).json(paymentInfos);
+    })
+    .catch(function (error) {
+      res.status(500).json(error);
+    });
   }
 };

@@ -33,6 +33,8 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+        TransactionManagers.belongsTo(models.Sensors, { foreignKey: sensor_id });
+        TransactionManagers.belongsTo(models.VirtualSensors, { foreignKey: virtualsensor_id });
       }
     },
     timestamps: false,
