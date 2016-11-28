@@ -40,3 +40,21 @@ DATABASE_PW=
 * ExpressJS
 * Angular
 * HandleBar
+
+
+### How to deploy to heroku
+
+```
+//Create app in heroku
+//Go to settings to set up your .env variable, copy variables for each entry based on your .env file
+
+//Add git to your heroku
+heroku git:remote -a <your_heroku_app>
+
+//Deploy to your heroku
+git push heroku <master-branch to deploy>
+
+//See how query run by tailing your logs
+heroku logs -t -a <your_app>
+
+```
