@@ -1,6 +1,7 @@
 'use strict';
 
 var Host = require('../models/').Hosts;
+var Routes = require('../models/').Routes;
 var uuid = require('node-uuid');
 var randomip = require('random-ip');
 
@@ -30,7 +31,8 @@ module.exports = {
     Host.findAll({
       where: {
         creator_id: userId
-      }
+      },
+      include: [Routes]
     })
     .then(function (hosts) {
       res.status(200).json(hosts);

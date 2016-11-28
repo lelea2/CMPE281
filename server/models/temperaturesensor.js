@@ -12,7 +12,9 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
-    temperature: DataTypes.DECIMAL(10, 2)
+    temperature: DataTypes.DECIMAL(10, 2),
+    latitude: DataTypes.DOUBLE,
+    longitude: DataTypes.DOUBLE
   }, {
     classMethods: {
       associate: function(models) {

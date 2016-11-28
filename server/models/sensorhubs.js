@@ -6,8 +6,8 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true
     },
     status: DataTypes.BOOLEAN,
-    city: DataTypes.STRING,
-    route: DataTypes.STRING
+    name: DataTypes.STRING,
+    description: DataTypes.TEXT
   }, {
     classMethods: {
       associate: function(models) {

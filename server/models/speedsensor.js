@@ -14,7 +14,9 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     speed: DataTypes.DECIMAL(10, 2),
-    timestamp: DataTypes.DATE
+    timestamp: DataTypes.DATE,
+    latitude: DataTypes.DOUBLE,
+    longitude: DataTypes.DOUBLE
   }, {
     classMethods: {
       associate: function(models) {

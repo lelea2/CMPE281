@@ -22,6 +22,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     routes = require('./app/routes'),
     accounts = require('./server/controllers/accounts'),
+    route = require('./server/controllers/routes'),
     hosts = require('./server/controllers/hosts'),
     payment = require('./server/controllers/payment'),
     sensors = require('./server/controllers/sensors');
@@ -79,6 +80,10 @@ app.delete('/api/accounts/:id', accounts.delete);
 //Billings components
 app.post('/api/payment', payment.create);
 app.put('/api/payment/:id', payment.update);
+
+//Routes components
+app.get('/api/routes', route.show);
+app.post('/api/routes', route.create);
 
 //Hosts components
 app.post('/api/hosts', hosts.create);

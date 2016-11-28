@@ -1,38 +1,39 @@
 'use strict';
+
 module.exports = function(sequelize, DataTypes) {
-  var Hosts = sequelize.define('Hosts', {
+  var Usage = sequelize.define('Usage', {
     id: {
       type: DataTypes.STRING,
       primaryKey: true
     },
-    creator_id: {
+    user_id: {
       type: DataTypes.STRING,
       references: {
         model: 'Users', // Can be both a string representing the table name, or a reference to the model
         key: 'id'
       }
     },
-    name: DataTypes.STRING,
-    description: DataTypes.STRING,
-    status: DataTypes.BOOLEAN,
-    ip: DataTypes.STRING,
-    sensorhub_id: {
+    transaction_manager_id: {
       type: DataTypes.STRING,
       references: {
-        model: 'SensorHubs', // Can be both a string representing the table name, or a reference to the model
+        model: 'TransactionManager', // Can be both a string representing the table name, or a reference to the model
         key: 'id'
       }
     },
-    route_id: {
-      type: DataTypes.STRING
-    }
+    data: DataTypes.TEXT,
+    timestamp: DataTypes.DATE
   }, {
     classMethods: {
       associate: function(models) {
-        // console.log(models)
-        Hosts.belongsTo(models.Routes, {foreignKey: 'route_id'})
+        // associations can be defined here
       }
-    }
+    },
+    timestamps: false,
+    freezeTableName: true,
+    // define the table's name
+    tableName: 'TransactionManager'
   });
-  return Hosts;
+
+  return Usage;
 };
+

@@ -12,7 +12,9 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
-    count: DataTypes.INTEGER
+    count: DataTypes.INTEGER,
+    latitude: DataTypes.DOUBLE,
+    longitude: DataTypes.DOUBLE
   }, {
     classMethods: {
       associate: function(models) {

@@ -46,6 +46,14 @@
               <label for="inputDescription">Bus description</label>
               <input type="text" id="inputDescription" ng-model="formBus.description" class="form-control" placeholder="Bus description" required>
               <br />
+              <div class="form-group routes-type">
+                <label for="route-type">Select a route: </label>&nbsp;&nbsp;&nbsp;
+                <div>
+                  <select class="form-control" ng-model="formBus.route">
+                    <option ng-repeat="route in routes" value={{route.id}}>{{route.description}}</option>
+                  </select>
+                </div>
+              </div>
               <button type="submit" class="btn btn-primary submit-form">Create Bus</button>
             </form>
           </div>
