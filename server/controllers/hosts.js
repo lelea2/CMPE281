@@ -1,5 +1,6 @@
 'use strict';
 
+var Account = require('./accounts');
 var Host = require('../models/').Hosts;
 var Routes = require('../models/').Routes;
 var SensorHubs = require('../models/').SensorHubs;
@@ -31,17 +32,33 @@ module.exports = {
 
   show(req, res) {
     var userId = req.headers.u || '';
-    Host.findAll({
-      where: {
-        creator_id: userId
-      },
-      include: [Routes, SensorHubs]
-    })
-    .then(function (hosts) {
-      res.status(200).json(hosts);
-    })
-    .catch(function (error) {
-      res.status(500).json(error);
+    Account.checkUser(userId, function(data) { //Check for admin vs. user as vendor
+      if (data.roles === 'admin') {
+        Host.findAll({
+          include: [Routes, SensorHubs]
+        })
+        .then(function (hosts) {
+          res.status(200).json(hosts);
+        })
+        .catch(function (error) {
+          res.status(500).json(error);
+        });
+      } else {
+        Host.findAll({
+          where: {
+            creator_id: userId
+          },
+          include: [Routes, SensorHubs]
+        })
+        .then(function (hosts) {
+          res.status(200).json(hosts);
+        })
+        .catch(function (error) {
+          res.status(500).json(error);
+        });
+      }
+    }, function(err) {
+      res.status(500).json(err);
     });
   },
 

@@ -2,6 +2,7 @@
 
 var VirtualSensors = require('../models/').VirtualSensors;
 var TransactionManager = require('../models/').TransactionManager;
+var Account = require('./accounts');
 var SLA = require('../models/').SLA;
 var uuid = require('node-uuid');
 

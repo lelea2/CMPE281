@@ -42,6 +42,16 @@ module.exports = {
     });
   },
 
+  checkUser(userId, callback, errCallback) {
+    User.findById(userId)
+      .then(function(user) {
+        callback(user);
+      })
+      .catch(function(err) {
+        errCallback(err);
+      })
+  },
+
   login(req, res) {
     var data = req.body;
     console.log(req.headers);

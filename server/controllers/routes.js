@@ -1,5 +1,6 @@
 'use strict';
 
+var Account = require('./accounts');
 var Routes = require('../models/').Routes;
 var uuid = require('node-uuid');
 
@@ -37,7 +38,7 @@ module.exports = {
   },
 
   detail(req, res) {
-    var userId = req.headers.u || '';
+    var userId = req.headers.u || ''; //TODO: restrict ID per user
     Routes.findById(req.params.id)
     .then(function (route) {
       res.status(200).json(route);
