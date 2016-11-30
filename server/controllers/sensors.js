@@ -1,5 +1,6 @@
 'use strict';
 
+var Account = require('./accounts');
 var SensorType = require('../models/').SensorTypes;
 var Sensors = require('../models/').Sensors;
 var ClipperSensor = require('../models/').ClipperSensors;
@@ -131,12 +132,7 @@ module.exports = {
   //Show sensor
   show(req, res) {
     var userId = req.headers.u || '';
-    Sensors.findAll({
-      where: {
-        provider_id: userId
-      }
-    })
-    .then(function (sensors) {
+    var generateSensors = function(sensors) {
       var clipper = 0,
           location = 0,
           speed = 0,
@@ -153,7 +149,7 @@ module.exports = {
           temperature++;
         }
       }
-      res.status(200).json({
+      return {
         data: sensors,
         metadata: {
           location: location,
@@ -161,10 +157,32 @@ module.exports = {
           speed: speed,
           temperature: temperature
         }
-      });
-    })
-    .catch(function (error) {
-      res.status(500).json(error);
+      };
+    };
+    Account.checkUser(userId, function(data) { //Check for admin vs. user as vendor
+      if (data.roles === 'admin') {
+        Sensors.findAll()
+          .then(function (sensors) {
+            res.status(200).json(generateSensors(sensors));
+          })
+          .catch(function (error) {
+            res.status(500).json(error);
+          });
+      } else {
+        Sensors.findAll({
+          where: {
+            provider_id: userId
+          }
+        })
+        .then(function (sensors) {
+          res.status(200).json(generateSensors(sensors));
+        })
+        .catch(function (error) {
+          res.status(500).json(error);
+        });
+      }
+    }, function(err) {
+      res.status(500).json(err);
     });
   },
 
