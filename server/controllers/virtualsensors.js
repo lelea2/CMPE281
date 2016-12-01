@@ -56,6 +56,7 @@ module.exports = {
   },
 
   show(req, res) {
+    var userId = req.headers.u;
     Account.checkUser(userId, function(data) { //Check for admin vs. user as vendor
       if (data.roles === 'admin') {
         TransactionManager.findAll().then(function(sensors) {
@@ -66,7 +67,7 @@ module.exports = {
       } else {
         TransactionManager.findAll({
           where: {
-            user_id: req.headers.u
+            user_id: userId
           }
         }).then(function(sensors) {
           res.status(200).json(sensors);
