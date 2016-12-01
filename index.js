@@ -101,6 +101,7 @@ app.delete('/api/hosts/:id', hosts.delete);
 //Hubs components
 app.get('/api/hubs', hubs.show);
 app.post('/api/hubs', hubs.create);
+app.post('/api/hubs/:hub_id/sensors', sensors.show_per_hub);
 
 //Sensors component
 app.get('/api/sensors/types', sensors.type);

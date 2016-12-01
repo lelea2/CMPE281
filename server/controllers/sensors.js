@@ -9,6 +9,34 @@ var LocationSensor = require('../models/').LocationSensors;
 var TemperatureSensor = require('../models/').TemperatureSensors;
 var uuid = require('node-uuid');
 
+var generateSensors = function(sensors) {
+  var clipper = 0,
+      location = 0,
+      speed = 0,
+      temperature = 0;
+  for (var i = 0; i < sensors.length; i++) {
+    var type = sensors[i].type;
+    if (type === 1) {
+      location++;
+    } else if (type === 2) {
+      clipper++;
+    } else if (type === 3) {
+      speed++;
+    } else {
+      temperature++;
+    }
+  }
+  return {
+    data: sensors,
+    metadata: {
+      location: location,
+      clipper: clipper,
+      speed: speed,
+      temperature: temperature
+    }
+  };
+};
+
 function createSensorDetail(newSensor, type, res) {
   console.log('Creating sensor detail');
   var data = {},
@@ -132,33 +160,6 @@ module.exports = {
   //Show sensor
   show(req, res) {
     var userId = req.headers.u || '';
-    var generateSensors = function(sensors) {
-      var clipper = 0,
-          location = 0,
-          speed = 0,
-          temperature = 0;
-      for (var i = 0; i < sensors.length; i++) {
-        var type = sensors[i].type;
-        if (type === 1) {
-          location++;
-        } else if (type === 2) {
-          clipper++;
-        } else if (type === 3) {
-          speed++;
-        } else {
-          temperature++;
-        }
-      }
-      return {
-        data: sensors,
-        metadata: {
-          location: location,
-          clipper: clipper,
-          speed: speed,
-          temperature: temperature
-        }
-      };
-    };
     Account.checkUser(userId, function(data) { //Check for admin vs. user as vendor
       if (data.roles === 'admin') {
         Sensors.findAll()
@@ -186,6 +187,40 @@ module.exports = {
     });
   },
 
+  //This is bad, should combine, but i put it here for easier to track within group
+  show_per_hub(req, res) {
+    Account.checkUser(userId, function(data) { //Check for admin vs. user as vendor
+      if (data.roles === 'admin') {
+        Sensors.findAll({
+          where: {
+            sensorhub_id: req.params.hub_id
+          }
+        })
+        .then(function (sensors) {
+          res.status(200).json(generateSensors(sensors));
+        })
+        .catch(function (error) {
+          res.status(500).json(error);
+        });
+      } else {
+        Sensors.findAll({
+          where: {
+            provider_id: userId,
+            sensorhub_id: req.params.hub_id
+          }
+        })
+        .then(function (sensors) {
+          res.status(200).json(generateSensors(sensors));
+        })
+        .catch(function (error) {
+          res.status(500).json(error);
+        });
+      }
+    }, function(err) {
+      res.status(500).json(err);
+    });
+  },
+
   type(req, res) {
     SensorType.findAll().then(function(types) {
       res.status(200).json(types);
@@ -193,4 +228,5 @@ module.exports = {
       res.status(500).json(error);
     })
   }
+
 };
