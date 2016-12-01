@@ -114,7 +114,7 @@ app.post('/api/vsensors', virtualsensors.create);
 app.get('/api/vsensors', virtualsensors.show);
 
 //Monitor component
-app.get('/api/monitor/statistics', virtualsensors.monitor);
+app.get('/api/monitor/statistics', virtualsensors.show);
 
 //Billings components
 app.get('/api/billings', billings.show);
