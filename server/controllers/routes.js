@@ -19,7 +19,7 @@ module.exports = {
     };
     Routes.create(reqBody)
       .then(function (newRoute) {
-        res.status(200).json(newRoute);
+        res.status(201).json(newRoute);
       })
       .catch(function (error) {
         res.status(500).json(error);

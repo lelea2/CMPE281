@@ -49,9 +49,30 @@ exports.sensors = function(req, res, next) {
   });
 };
 
+exports.vsensors = function(req, res, next) {
+  res.render('virtual_sensors', { title: 'Dashboard | VSensor', layout: 'main' }, function (err, html) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    }
+    res.send(minifyHTML(html));
+  });
+};
+
 //Create sensor page
 exports.create = function(req, res, next) {
   res.render('create_sensor', { title: 'Dashboard | Create sensor', layout: 'main' }, function (err, html) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    }
+    res.send(minifyHTML(html));
+  });
+};
+
+//Create sensor page
+exports.create_vsensor = function(req, res, next) {
+  res.render('create_vsensor', { title: 'Dashboard | Create vSensor', layout: 'main' }, function (err, html) {
     if (err) {
       console.log(err);
       return next(err);

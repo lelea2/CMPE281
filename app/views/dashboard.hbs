@@ -12,7 +12,8 @@
     {{/equal}}
     {{#equal _role "admin"}}
       {{> vendor_panel}}
-    {{else}}
+    {{/equal}}
+    {{#equal _role "customer"}}
       {{> customer_panel}}
     {{/equal}}
     <!-- Maps -->

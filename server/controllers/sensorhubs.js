@@ -23,6 +23,17 @@ module.exports = {
       });
   },
 
+  detail(req, res) {
+    var userId = req.headers.u || ''; //TODO: restrict ID per user
+    SensorHubs.findById(req.params.id)
+    .then(function (hub) {
+      res.status(200).json(hub);
+    })
+    .catch(function (error) {
+      res.status(500).json(error);
+    });
+  },
+
   show(req, res) {
     SensorHubs.findAll()
     .then(function (hubs) {

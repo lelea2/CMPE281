@@ -30,7 +30,7 @@ module.exports = {
     };
     PaymentInfo.create(reqBody)
       .then(function (paymenInfo) {
-        res.status(200).json(paymenInfo);
+        res.status(201).json(paymenInfo);
       })
       .catch(function (error) {
         res.status(500).json(error);

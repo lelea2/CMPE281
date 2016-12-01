@@ -31,6 +31,8 @@ var express = require('express'),
     virtualsensors = require('./server/controllers/virtualsensors');
 
 
+// console.log('starting...');
+
 app.use(bodyParser.urlencoded({"extended": false}));
 app.use(bodyParser.json())
 
@@ -94,6 +96,7 @@ app.post('/api/routes', route.create);
 //Hosts components
 app.post('/api/hosts', hosts.create);
 app.get('/api/hosts', hosts.show);
+app.get('/api/hosts/:id', hosts.detail);
 app.get('/api/hosts/status', hosts.showstatus);
 app.put('/api/hosts/:id', hosts.update);
 app.delete('/api/hosts/:id', hosts.delete);
@@ -101,6 +104,7 @@ app.delete('/api/hosts/:id', hosts.delete);
 //Hubs components
 app.get('/api/hubs', hubs.show);
 app.post('/api/hubs', hubs.create);
+app.post('/api/hubs/:id', hubs.detail);
 app.post('/api/hubs/:hub_id/sensors', sensors.show_per_hub);
 
 //Sensors component
@@ -126,8 +130,10 @@ app.post('/api/billings', billings.create);
 app.get('/signin', security.userAuthenticated(), routes.signin);
 app.get('/', security.userAuthenticated(), routes.signin);
 app.get('/sensors', security.userRequiredLoggedIn(), routes.sensors);
+app.get('/vsensors', security.userRequiredLoggedIn(), routes.vsensors);
 app.get('/dashboard', security.userRequiredLoggedIn(), routes.dashboard);
 app.get('/create', security.userRequiredLoggedIn(), routes.create);
+app.get('/create_vsensor', security.userRequiredLoggedIn(), routes.create_vsensor);
 app.get('/hosts', security.userRequiredLoggedIn(), routes.hosts);
 app.get('/hubs', security.userRequiredLoggedIn(), routes.hubs);
 app.get('/account', security.userRequiredLoggedIn(), routes.account);

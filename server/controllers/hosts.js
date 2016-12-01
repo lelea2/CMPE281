@@ -126,6 +126,17 @@ module.exports = {
     });
   },
 
+  detail(req, res) {
+    var userId = req.headers.u || ''; //TODO: restrict ID per user
+    Host.findById(req.params.id)
+    .then(function (host) {
+      res.status(200).json(host);
+    })
+    .catch(function (error) {
+      res.status(500).json(error);
+    });
+  },
+
   delete(req, res) {
     Host.destroy({
       where: {
