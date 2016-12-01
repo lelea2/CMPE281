@@ -7,6 +7,8 @@ var Account = require('./accounts');
 var SLA = require('../models/').SLA;
 var uuid = require('node-uuid');
 
+var MAX_RATIO = 3;
+
 module.exports = {
 
   create(req, res) {
@@ -75,4 +77,6 @@ module.exports = {
     }, function(err) {
       res.status(500).json(err);
     });
+  }
+
 };
