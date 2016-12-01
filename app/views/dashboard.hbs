@@ -1,10 +1,8 @@
 {{> leftrail}}
 <div class="right" ng-controller="dashboardController">
   <div id="page-wrapper">
-    <div class="row">
-      <div class="col-lg-12">
-        <h1 class="page-header">Admin Dashboard</h1>
-      </div>
+    <div class="heading-section">
+      <h3>Dashboard</h3>
     </div>
     <!-- Dashoboard Heading End -->
     <!-- /.row -->
@@ -27,7 +25,7 @@
       </div>
       <!-- End of Sensor Monitoring -->
       <div class="col-lg-4 col-md-6">
-        <a href="sensormetering.html">
+        <a href="/metering">
           <div class="panel panel-green">
               <div class="panel-heading">
                   <div class="row">
@@ -44,7 +42,7 @@
       </div>
       <!--  End of Sensor Metering-->
       <div class="col-lg-4 col-md-6">
-        <a href="createsensor.html">
+        <a href="/create">
           <div class="panel panel-yellow">
               <div class="panel-heading">
                   <div class="row">
@@ -63,7 +61,7 @@
     <!-- /.row End of First Row -->
     <div class="row">
       <div class="col-lg-4 col-md-6">
-        <a href="managesensor.html">
+        <a href="/sensors">
           <div class="panel panel-yellow">
               <div class="panel-heading">
                   <div class="row">
@@ -80,7 +78,7 @@
       </div>
       <!-- End of Manage Sensor -->
         <div class="col-lg-4 col-md-6">
-          <a href="provisionsensor.html">
+          <a href="/vsensors">
             <div class="panel panel-red">
                 <div class="panel-heading">
                     <div class="row">
@@ -97,7 +95,7 @@
         </div>
         <!-- End of Provision Sensor -->
         <div class="col-lg-4 col-md-6">
-          <a href="billing.html">
+          <a href="/billings">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <div class="row">
@@ -134,7 +132,6 @@
            </div>
            <div class="panel-body">
               <div id="morris-donut-chart1"></div>
-              <!-- <a href="#" class="btn btn-default btn-block">View Details</a> -->
            </div>
         </div>
      </div>
