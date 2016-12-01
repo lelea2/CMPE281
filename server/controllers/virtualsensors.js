@@ -2,12 +2,40 @@
 
 var Account = require('./accounts');
 var VirtualSensors = require('../models/').VirtualSensors;
+var Sensors = require('../models/').Sensors;
+var SensorHubs = require('../models/').SensorHubs;
 var TransactionManager = require('../models/').TransactionManager;
 var Account = require('./accounts');
 var SLA = require('../models/').SLA;
 var uuid = require('node-uuid');
 
 var MAX_RATIO = 3;
+
+//{
+//     sensor_hub_id: <uuid>,
+//     provider_id: <uuid>,
+//     host_id: <uuid>,
+//     route_id: <uuid>,
+//     sensor_id: <uuid>,
+//     state: <string>,
+//     subscription_ratio: <string>,
+//     virtual_sensor: string of <uuid> separated by ;
+//     Virtual_sensor_status: <string>
+// }
+var sensorDataMassage = function(collections) {
+  var data = {};
+  for (var i = 0; i < collections.length; i++) {
+    var attr = collections[i];
+    if (data[attr.sensor_id]) {
+
+    } else {
+      data[attr.sensor_id] = {
+
+      };
+    }
+  }
+  return result;
+};
 
 module.exports = {
 
@@ -59,7 +87,9 @@ module.exports = {
     var userId = req.headers.u;
     Account.checkUser(userId, function(data) { //Check for admin vs. user as vendor
       if (data.roles === 'admin') {
-        TransactionManager.findAll().then(function(sensors) {
+        TransactionManager.findAll({
+          include: [Sensors, VirtualSensors]
+        }).then(function(sensors) {
           res.status(200).json(sensors);
         }).catch(function(error) {
           res.status(500).json(error);
@@ -68,7 +98,8 @@ module.exports = {
         TransactionManager.findAll({
           where: {
             user_id: userId
-          }
+          },
+          include: [Sensors, VirtualSensors]
         }).then(function(sensors) {
           res.status(200).json(sensors);
         }).catch(function(error) {
@@ -78,6 +109,10 @@ module.exports = {
     }, function(err) {
       res.status(500).json(err);
     });
+  },
+
+  monitor(req, res) {
+
   }
 
 };
