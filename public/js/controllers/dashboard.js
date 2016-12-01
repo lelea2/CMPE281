@@ -7,8 +7,16 @@ App.controller('dashboardController', ['$scope', '$http', function ($scope, $htt
 
   $scope.init = function() {
     //Draw sensor type
-    // console.log('init dashboard');
-    //Draw your pie chart
+    $scope.drawSensorStat();
+    //Draw hosts
+    $scope.drawHostStat();
+    //Draw billings
+    $scope.drawBillings();
+    //draw map
+    $scope.drawMap();
+  };
+
+  $scope.drawSensorStat = function() {
     $http({
       method: 'GET',
       headers: APP_CLOUD.getHeaders(true),
@@ -33,6 +41,9 @@ App.controller('dashboardController', ['$scope', '$http', function ($scope, $htt
         resize: true
       });
     });
+  };
+
+  $scope.drawHostStat = function() {
     //Draw your host
     $http({
       method: 'GET',
@@ -53,10 +64,25 @@ App.controller('dashboardController', ['$scope', '$http', function ($scope, $htt
          resize: true
       });
     });
-    //Draw billings
-    //draw map
-    $scope.drawMap();
-  }
+  };
+
+  $scope.drawBillings = function() {
+    $http({
+      method: 'GET',
+      headers: APP_CLOUD.getHeaders(true),
+      url: '/api/billings'
+    }).then(function(resp) {
+      Morris.Bar({
+        element: 'morris-bar-chart',
+        data: resp.data,
+        xkey: 'startDate',
+        ykeys: ['amount'],
+        labels: ['Amount'],
+        hideHover: 'auto',
+        resize: true
+      });
+    });
+  };
 
   $scope.drawMap = function() {
     $scope.directionsService = new google.maps.DirectionsService;
