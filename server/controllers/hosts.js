@@ -64,12 +64,7 @@ module.exports = {
 
   showstatus(req, res) {
     var userId = req.headers.u || '';
-    Host.findAll({
-      where: {
-        creator_id: userId
-      }
-    })
-    .then(function (hosts) {
+    var hosts_status = function(hosts) {
       var active = 0,
           inactive = 0;
       for (var i = 0; i < hosts.length; i++) {
@@ -79,14 +74,35 @@ module.exports = {
           inactive++;
         }
       }
-      //return status
-      res.status(200).json({
+      return {
         active: active,
         inactive: inactive
-      });
-    })
-    .catch(function (error) {
-      res.status(500).json(error);
+      };
+    };
+    Account.checkUser(userId, function(data) { //Check for admin vs. user as vendor
+      if (data.roles === 'admin') {
+        Host.findAll()
+        .then(function (hosts) {
+          res.status(200).json(hosts_status(hosts));
+        })
+        .catch(function (error) {
+          res.status(500).json(error);
+        });
+      } else {
+        Host.findAll({
+          where: {
+            creator_id: userId
+          }
+        })
+        .then(function (hosts) {
+          res.status(200).json(hosts_status(hosts));
+        })
+        .catch(function (error) {
+          res.status(500).json(error);
+        });
+      }
+    }, function(err) {
+      res.status(500).json(err);
     });
   },
 
