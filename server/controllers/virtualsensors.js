@@ -1,5 +1,6 @@
 'use strict';
 
+var Account = require('./accounts');
 var VirtualSensors = require('../models/').VirtualSensors;
 var TransactionManager = require('../models/').TransactionManager;
 var Account = require('./accounts');
@@ -53,15 +54,25 @@ module.exports = {
   },
 
   show(req, res) {
-    TransactionManager.findAll({
-      where: {
-        user_id: req.headers.u
+    Account.checkUser(userId, function(data) { //Check for admin vs. user as vendor
+      if (data.roles === 'admin') {
+        TransactionManager.findAll().then(function(sensors) {
+          res.status(200).json(sensors);
+        }).catch(function(error) {
+          res.status(500).json(error);
+        })
+      } else {
+        TransactionManager.findAll({
+          where: {
+            user_id: req.headers.u
+          }
+        }).then(function(sensors) {
+          res.status(200).json(sensors);
+        }).catch(function(error) {
+          res.status(500).json(error);
+        })
       }
-    }).then(function(sensors) {
-      res.status(200).json(sensors);
-    }).catch(function(error) {
-      res.status(500).json(error);
-    })
-  }
-
+    }, function(err) {
+      res.status(500).json(err);
+    });
 };
