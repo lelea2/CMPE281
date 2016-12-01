@@ -9,7 +9,7 @@ App.controller('paymentController', ['$scope', '$http', function ($scope, $http)
       headers : APP_CLOUD.getHeaders(),
       data    : $scope.formPayment,
     }).then(function(data) {
-      window.location = '/sensors'; //redirect to create payment
+      window.location = '/dashboard'; //redirect to create payment
     }, function(err) {
     });
   };

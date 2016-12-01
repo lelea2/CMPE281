@@ -29,11 +29,11 @@ module.exports = (function() {
    * Function setting user cookie
    * @method  setUserCookie
    */
-  function setUserCookie(req, userId) {
+  function setUserCookie(req, userId, role) {
     console.log('set user cookie, userId=' + userId);
     try {
       var cookies = new Cookies(req, req.res);
-      cookies.set(USER_COOKIE, encrypt(userId), {
+      cookies.set(USER_COOKIE, encrypt(JSON.stringify({u: userId, role: role})), {
         httpOnly: true,
         path: '/',
         expires: new Date(Date.now() + TTL),
@@ -53,8 +53,20 @@ module.exports = (function() {
     try {
       var cookies = new Cookies(req, req.res);
       var userCookie = cookies.get(USER_COOKIE);
-      var userId = decrypt(userCookie);
-      return userId;
+      var data = JSON.parse(decrypt(userCookie));
+      return data.u;
+    } catch(ex) {
+      //console.log(ex);
+      return '';
+    }
+  }
+
+  function getUserRole(req) {
+    try {
+      var cookies = new Cookies(req, req.res);
+      var userCookie = cookies.get(USER_COOKIE);
+      var data = JSON.parse(decrypt(userCookie));
+      return data.role;
     } catch(ex) {
       //console.log(ex);
       return '';
@@ -103,6 +115,7 @@ module.exports = (function() {
   return {
     setUserCookie: setUserCookie,
     getUserId: getUserId,
+    getUserRole: getUserRole,
     logout: logout,
     userAuthenticated: userAuthenticated,
     userRequiredLoggedIn: userRequiredLoggedIn

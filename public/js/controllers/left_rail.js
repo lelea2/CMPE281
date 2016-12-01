@@ -13,7 +13,7 @@ App.controller('leftRailController', ['$scope', '$http', function ($scope, $http
       headers: headers,
       url: '/api/accounts/' + headers.u
     }).then(function(resp) {
-      console.log(resp.data);
+      // console.log(resp.data);
       $scope.accountData = resp.data;
     });
   };

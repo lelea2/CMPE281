@@ -14,7 +14,7 @@ App.controller('signinController', ['$scope', '$http', function ($scope, $http) 
       headers : APP_CLOUD.getHeaders(true),
       data    : $scope.formSigninData
     }).then(function(data) {
-      window.location = '/sensors'; //redirect to dashboard
+      window.location = '/dashboard'; //redirect to dashboard
     }, function(err) {
     });
   };

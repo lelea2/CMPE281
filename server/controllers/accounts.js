@@ -23,7 +23,7 @@ module.exports = {
     User.create(reqBody)
       .then(function (newUser) {
         if (req.headers.setcookie === 'true') {
-          security.setUserCookie(req, newUser.id);
+          security.setUserCookie(req, newUser.id, newUser.roles);
         }
         res.status(200).json(newUser);
       })
@@ -62,7 +62,7 @@ module.exports = {
     }).then(function(user) {
       if (passwordHelpers.verifyPassword(data.password, user[0].password)) {
         if (req.headers.setcookie === 'true') {
-          security.setUserCookie(req, user[0].id);
+          security.setUserCookie(req, user[0].id, user[0].roles);
         }
         res.status(200).json(user[0]);
       } else {
