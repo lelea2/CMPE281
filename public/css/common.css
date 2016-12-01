@@ -2,6 +2,10 @@ body {
   background: #eee;
 }
 
+.container {
+  width: 100% !important;
+}
+
 .navbar {
   background: #5a5a5a;
   height: 80px;

@@ -121,6 +121,7 @@ app.post('/api/billings', billings.create);
 app.get('/signin', security.userAuthenticated(), routes.signin);
 app.get('/', security.userAuthenticated(), routes.signin);
 app.get('/sensors', security.userRequiredLoggedIn(), routes.sensors);
+app.get('/dashboard', security.userRequiredLoggedIn(), routes.dashboard);
 app.get('/create', security.userRequiredLoggedIn(), routes.create);
 app.get('/hosts', security.userRequiredLoggedIn(), routes.hosts);
 app.get('/hubs', security.userRequiredLoggedIn(), routes.hubs);
