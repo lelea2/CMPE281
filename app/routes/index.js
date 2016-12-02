@@ -38,6 +38,17 @@ exports.dashboard = function(req, res, next) {
   });
 };
 
+//Display monitoring page
+exports.monitor = function(req, res, next) {
+  res.render('monitor', { title: 'Sensor Monitor', layout: 'main' }, function (err, html) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    }
+    res.send(minifyHTML(html));
+  });
+};
+
 //Display dashboard page
 exports.sensors = function(req, res, next) {
   res.render('instances', { title: 'Dashboard | Instance', layout: 'main' }, function (err, html) {
