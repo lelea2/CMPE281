@@ -49,6 +49,17 @@ exports.monitor = function(req, res, next) {
   });
 };
 
+//Displaying metering page
+exports.metering(req, res, next) = function(req, res, next) {
+  res.render('metering', { title: 'Sensor Metering', layout: 'main' }, function (err, html) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    }
+    res.send(minifyHTML(html));
+  });
+};
+
 //Display dashboard page
 exports.sensors = function(req, res, next) {
   res.render('instances', { title: 'Dashboard | Instance', layout: 'main' }, function (err, html) {

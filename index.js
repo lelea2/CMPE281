@@ -131,6 +131,8 @@ app.get('/signin', security.userAuthenticated(), routes.signin);
 app.get('/', security.userAuthenticated(), routes.signin);
 app.get('/sensors', security.userRequiredLoggedIn(), routes.sensors);
 app.get('/vsensors', security.userRequiredLoggedIn(), routes.vsensors);
+app.get('/monitor', security.userRequiredLoggedIn(), routes.monitor);
+app.get('/metering', security.userRequiredLoggedIn(), routes.metering);
 app.get('/dashboard', security.userRequiredLoggedIn(), routes.dashboard);
 app.get('/create', security.userRequiredLoggedIn(), routes.create);
 app.get('/create_vsensor', security.userRequiredLoggedIn(), routes.create_vsensor);
