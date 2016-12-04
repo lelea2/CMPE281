@@ -48,18 +48,18 @@ App.controller('dashboardController', ['$scope', '$http', function ($scope, $htt
     $http({
       method: 'GET',
       headers: APP_CLOUD.getHeaders(true),
-      url: '/api/hosts/status'
+      url: '/api/hosts_status'
     }).then(function(resp) {
-      // console.log(resp.data);
-      $scope.buses_status = resp.data;
+      console.log(resp.data);
+      $scope.buses_status = resp.data || {};
       Morris.Donut({
          element: 'morris-donut-chart',
          data: [{
              label: "ON ",
-             value: $scope.buses_status.active
+             value: $scope.buses_status.active || 0
          }, {
              label: "OFF",
-             value: $scope.buses_status.inactive
+             value: $scope.buses_status.inactive || 0
          }],
          resize: true
       });

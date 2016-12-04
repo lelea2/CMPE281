@@ -1,30 +1,53 @@
-<div class="visible-md visible-lg left" ng-controller="leftRailController" data-ng-init="init()">
+<div class="visible-md visible-lg left" role="navigation" ng-controller="leftRailController" data-ng-init="init()">
   {{{{raw-helper}}}}
     <div class="welcome-message">
       <strong><i>Hi, {{accountData.roles}}</i></strong>
       <p>Khanh Dao</p>
     </div>
-    <h4>Dashboard</h4>
-    <div class="item">
-      <p><strong>Bus</strong></p>
-      <a href="/hosts">Manage Bus</a>
-    </div>
-    <div class="item">
-      <p><strong>Sensors</strong></p>
-      <a href="/create">Create sensor</a>
-      <a href="/sensors">Manage sensor</a>
-      <!--<a href="/hub">Provision sensor</a>-->
-    </div>
-    <div class="item">
-      <p><strong>Billings</strong></p>
-      <a href="/usages">Usage Reports</a>
-      <a href="/billings">Billing History</a>
-      <a href="/payments">Payment History</a>
-    </div>
-    <div class="item">
-      <p><strong>Accounts</strong></p>
-      <a href="/account">Manage Account</a>
-    </div>
   {{{{/raw-helper}}}}
+  <div class="sidebar-nav navbar-collapse">
+    <ul class="nav" id="side-menu">
+      <li>
+        <a href="/admin"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Cloud Resource Monitoring <span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+          <li>
+              <a href="/monitor">Sensor Monitoring</a>
+          </li>
+          <li>
+              <a href="/metering">Sensor Metering</a>
+          </li>
+        </ul>
+      <!-- /.nav-second-level -->
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-wrench fa-fw"></i> Cloud Resource Management<span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+          <li>
+            <a href="/create">Add Vendor</a>
+          </li>
+          <li>
+            <a href="/sensors">Manage Sensor</a>
+          </li>
+          <li>
+            <a href="/provision">Provision Sensor</a>
+          </li>
+        </ul>
+        <!-- /.nav-second-level -->
+      </li>
+      <li>
+        <a href="/loadbalancing"><i class="fa fa-balance-scale fa-fw"></i> Load Balancing</a>
+      </li>
+      <li>
+        <a href="/billings"><i class="fa fa-edit fa-fw"></i> Billing</a>
+      </li>
+      <li>
+        <a href="/account"><i class="fa fa-user"></i> Manage Account</a>
+      </li>
+    </ul>
+  </div>
+  <!-- /.sidebar-collapse -->
 </div>
 <script src="../js/controllers/left_rail.js"></script>

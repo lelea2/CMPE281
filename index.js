@@ -97,8 +97,8 @@ app.post('/api/routes', route.create);
 app.post('/api/hosts', hosts.create);
 app.get('/api/hosts', hosts.show);
 app.get('/api/hosts/:id', hosts.detail);
-app.get('/api/hosts/status', hosts.showstatus);
 app.put('/api/hosts/:id', hosts.update);
+app.get('/api/hosts_status', hosts.showstatus);
 app.delete('/api/hosts/:id', hosts.delete);
 
 //Hubs components

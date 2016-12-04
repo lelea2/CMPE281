@@ -50,7 +50,7 @@ exports.monitor = function(req, res, next) {
 };
 
 //Displaying metering page
-exports.metering(req, res, next) = function(req, res, next) {
+exports.metering = function(req, res, next) {
   res.render('metering', { title: 'Sensor Metering', layout: 'main' }, function (err, html) {
     if (err) {
       console.log(err);
