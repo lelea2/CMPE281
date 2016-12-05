@@ -83,7 +83,7 @@ exports.sensors = function(req, res, next) {
 };
 
 exports.vsensors = function(req, res, next) {
-  res.render('virtual_sensors', { title: 'Dashboard | VSensor', layout: 'main' }, function (err, html) {
+  res.render('virtual_sensor', { title: 'Dashboard | VSensor', layout: 'main' }, function (err, html) {
     if (err) {
       console.log(err);
       return next(err);
