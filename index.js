@@ -141,6 +141,8 @@ app.get('/hubs', security.userRequiredLoggedIn(), routes.hubs);
 app.get('/account', security.userRequiredLoggedIn(), routes.account);
 app.get('/payment/create', security.userRequiredLoggedIn(), routes.payment);
 app.get('/billings', security.userRequiredLoggedIn(), routes.billings);
+app.get('/loadbalancing', security.userRequiredLoggedIn(), routes.loadbalancing);
+
 //Log user out
 app.get('/logout', function(req, res) {
   security.logout(req);

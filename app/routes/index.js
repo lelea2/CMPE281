@@ -60,6 +60,17 @@ exports.metering = function(req, res, next) {
   });
 };
 
+//Displaying loadbalancig page
+exports.loadbalancing = function(req, res, next) {
+  res.render('loadbalance', { title: 'Load Balancing', layout: 'main' }, function (err, html) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    }
+    res.send(minifyHTML(html));
+  });
+};
+
 //Display dashboard page
 exports.sensors = function(req, res, next) {
   res.render('instances', { title: 'Dashboard | Instance', layout: 'main' }, function (err, html) {
