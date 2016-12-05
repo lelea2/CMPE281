@@ -1,9 +1,34 @@
 {{> leftrail}}
-<div class="right" ng-controller="billingsController">
+<div class="right" ng-controller="billingsController" data-ng-init="init()">
   <div class="heading-section">
     <h3>Billings</h3>
     <p>View your billings history as below</p>
   </div>
-
+  <div>
+    {{{{raw-helper}}}}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Due Date</th>
+          <th>Amount($)</th>
+          <th>Paid</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="billing in billings">
+          <td>{{$index + 1}}</td>
+          <td>{{billing.startDate}}</td>
+          <td>{{billing.endDate}}</td>
+          <td>{{billing.dueDate}}</td>
+          <td>${{billing.amount}}</td>
+          <td>{{billing.isPaid}}</td>
+        </tr>
+      </tbody>
+    </table>
+    {{{{/raw-helper}}}}
+  </div>
 </div>
 <script src="../js/controllers/billings.js"></script>
