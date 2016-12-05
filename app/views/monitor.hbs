@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="../css/monitor" />
+<link rel="stylesheet" type="text/css" href="../css/monitor.css" />
 {{> leftrail}}
 <div class="right" ng-controller="monitorController" ng-init="init()">
   <div id="page-wrapper">
@@ -9,24 +9,38 @@
   </div>
   <div class="row">
     <table class="table" id="mn_table1">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Hub</th>
-            <th>M-Device</th>
-            <th>Route</th>
-            <th>Sensor</th>
-            <th>Type</th>
-            <th>State</th>
-            <th>Provider</th>
-            <th>Subscription Ratio</th>
-            <th>V-Sensor</th>
-            <th>State</th>
-          </tr>
-        </thead>
-        <tbody>
-
-        </tbody>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Hub</th>
+          <th>M-Device</th>
+          <th>Route</th>
+          <th>Sensor</th>
+          <th>Type</th>
+          <th>State</th>
+          <th>Provider</th>
+          <th>Subscription Ratio</th>
+          <th>V-Sensor</th>
+          <th>State</th>
+        </tr>
+      </thead>
+      {{{{raw-helper}}}}
+      <tbody>
+        <tr ng-repeat="monitor in monitors">
+          <td>{{$index + 1}}</td>
+          <td>{{monitor.sensor_hub_id}}</td>
+          <td>{{monitor.host_id}}</td>
+          <td>{{monitor.route_id}}</td>
+          <td>{{monitor.type}}</td>
+          <td>{{monitor.sensor_id}}</td>
+          <td>{{monitor.state}}</td>
+          <td>{{monitor.provider_id}}</td>
+          <td>{{monitor.subscription_ratio}}</td>
+          <td>{{monitor.virtual_sensor}}</td>
+          <td>{{monitor.state}}</td>
+        <tr ng-repeat="billing in billings">
+      </tbody>
+      {{{{/raw-helper}}}}
     </table>
   </div>
 </div>

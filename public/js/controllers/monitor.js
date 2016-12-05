@@ -1,7 +1,16 @@
 App.controller('monitorController', ['$scope', '$http', function ($scope, $http) {
 
-  $scope.init = function() {
+  $scope.monitors = [];
 
-  }
+  $scope.init = function() {
+    $http({
+      method: 'GET',
+      headers: APP_CLOUD.getHeaders(true),
+      url: '/api/vsensors'
+    }).then(function(resp) {
+      console.log(resp.data);
+      $scope.monitors = resp.data;
+    });
+  };
 
 }]);

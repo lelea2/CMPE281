@@ -4,16 +4,33 @@ App.controller('dashboardController', ['$scope', '$http', function ($scope, $htt
   $scope.buses_status = {};
   $scope.markers = [];
   $scope.directionsService = null;
+  $scope.billings = [];
 
   $scope.init = function() {
     //Draw sensor type
     $scope.drawSensorStat();
     //Draw hosts
     $scope.drawHostStat();
-    //Draw billings
-    $scope.drawBillings();
+    if ($('#billing-table').length > 0) { //Draw billings table (admin)
+      console.log('billing table...');
+      $scope.drawBillingsTable();
+    } else { //Draw billings
+      console.log('draw billings graph');
+      $scope.drawBillings();
+    }
     //draw map
     $scope.drawMap();
+  };
+
+  $scope.drawBillingsTable = function() {
+    $http({
+      method: 'GET',
+      headers: APP_CLOUD.getHeaders(true),
+      url: '/api/billings'
+    }).then(function(resp) {
+      console.log(resp.data);
+      $scope.billings = resp.data;
+    });
   };
 
   $scope.drawSensorStat = function() {

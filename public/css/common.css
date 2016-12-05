@@ -62,7 +62,7 @@ a:active {
   vertical-align: top;
   background: #ededed;
   border-right: 1px solid #ddd;
-  min-height: 600px;
+  min-height: 100%;
 }
 
 .left .welcome-message {
