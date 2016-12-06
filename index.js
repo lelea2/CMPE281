@@ -13,6 +13,7 @@
 
 var express = require('express'),
     app = express(),
+    http = require('http'),
     path = require('path'),
     compression = require('compression'),
     cookieParser = require('cookie-parser'),
@@ -21,6 +22,8 @@ var express = require('express'),
     expressHbs = require('express-handlebars'),
     bodyParser = require('body-parser'),
     routes = require('./app/routes'),
+    cluster = require('cluster'),
+    os = require('os'),
     accounts = require('./server/controllers/accounts'),
     billings = require('./server/controllers/billings'),
     route = require('./server/controllers/routes'),
@@ -32,6 +35,10 @@ var express = require('express'),
     usage = require('./server/controllers/usage'),
     sla = require('./server/controllers/sla');
 
+var args = process.argv.splice(2);
+
+// var seaport = require('seaport');
+// var ports = seaport.connect('localhost', 9090);
 
 // console.log('starting...');
 
@@ -161,7 +168,18 @@ app.get('/logout', function(req, res) {
   res.redirect(302, '/');
 });
 
-app.set('port', process.env.PORT || 8000);
-app.listen(app.get('port'), function () {
-  console.log('Server started on port', app.get('port'));
-});
+app.set('port', args[0] || process.env.PORT || 8000);
+// app.listen(app.get('port'), function () {
+//   console.log('Server started on port', app.get('port'));
+// });
+
+if (cluster.isMaster) { //with cluster
+  console.log('CPUS: ' + os.cpus().length);
+  for (var i = 0; i < os.cpus().length / 2; i++) {
+    var worker = cluster.fork();
+  }
+} else { //no cluster
+  app.listen(app.get('port'), function () {
+    console.log('Server started on port', app.get('port'));
+  });
+}
