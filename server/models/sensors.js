@@ -34,6 +34,8 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+        Sensors.belongsTo(models.Hosts, { foreignKey: 'host_id' });
+        Sensors.belongsTo(models.Users, { foreignKey: 'provider_id' });
       }
     },
     underscored: true

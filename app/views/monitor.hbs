@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="row">
-    <table class="table" id="mn_table1">
+    <table class="table">
       <thead>
         <tr>
           <th>#</th>
@@ -28,16 +28,16 @@
       <tbody>
         <tr ng-repeat="monitor in monitors">
           <td>{{$index + 1}}</td>
-          <td>{{monitor.sensor_hub_id}}</td>
-          <td>{{monitor.host_id}}</td>
-          <td>{{monitor.route_id}}</td>
-          <td>{{monitor.type}}</td>
-          <td>{{monitor.sensor_id}}</td>
-          <td>{{monitor.state}}</td>
-          <td>{{monitor.provider_id}}</td>
-          <td>{{monitor.subscription_ratio}}</td>
-          <td>{{monitor.virtual_sensor}}</td>
-          <td>{{monitor.state}}</td>
+          <td>{{monitor.Sensor.Host.SensorHub.name}}</td>
+          <td>{{monitor.Sensor.Host.name}}</td>
+          <td>{{monitor.Sensor.Host.Route.description}}</td>
+          <td>{{monitor.Sensor.name}}</td>
+          <td>{{convertType(monitor.Sensor.type)}}</td>
+          <td>{{monitor.Sensor.status}}</td>
+          <td>{{displayId(monitor.user_id)}}</td>
+          <td>1 : {{monitor.subscription}}</td>
+          <td>{{monitor.VirtualSensor.name}}</td>
+          <td>{{monitor.VirtualSensor.status}}</td>
         <tr ng-repeat="billing in billings">
       </tbody>
       {{{{/raw-helper}}}}
