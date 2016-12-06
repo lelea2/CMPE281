@@ -28,7 +28,8 @@ var express = require('express'),
     hosts = require('./server/controllers/hosts'),
     payment = require('./server/controllers/payment'),
     sensors = require('./server/controllers/sensors'),
-    virtualsensors = require('./server/controllers/virtualsensors');
+    virtualsensors = require('./server/controllers/virtualsensors'),
+    usage = require('./server/controllers/usage');
 
 
 // console.log('starting...');
@@ -50,7 +51,7 @@ app.use(cookieParser('keycatboard'));
 //Set up userId
 app.use(function(req, res, next) {
   res.locals._userId = security.getUserId(req) || '';
-  res.locals._role = security.getUserRole(req) || '';
+  res.locals._role = security.getUserRole(req) || 'customer';
   next();
 });
 
@@ -123,6 +124,11 @@ app.get('/api/monitor/statistics', virtualsensors.show);
 //Billings components
 app.get('/api/billings', billings.show);
 app.post('/api/billings', billings.create);
+
+//Usage components
+app.post('/api/usage', usage.create);
+app.post('/api/usage/:id', usage.update);
+app.get('/api/usage', usage.show);
 
 /*****************************************************/
 /***************** Views Routing *********************/

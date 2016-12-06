@@ -13,10 +13,7 @@ module.exports = function(sequelize, DataTypes) {
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     password: DataTypes.STRING,
-    isAdmin: DataTypes.BOOLEAN,
-    roles: DataTypes.ENUM('admin','vendor', 'customer'),
-    createdAt: DataTypes.DATE,
-    updatedAt: DataTypes.DATE
+    roles: DataTypes.ENUM('admin','vendor', 'customer')
   }, {
     classMethods: {
       associate: function(models) {

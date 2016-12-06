@@ -3,14 +3,15 @@ App.controller('createSensorController', ['$scope', '$http', function ($scope, $
   $scope.formSensor = {};
 
   $scope.sensors_type = [];
+  $scope.buses_type = [];
 
-  $scope.choices = [{
-    text: 'Physical Sensor',
-    isEmulator: "false"
-  }, {
-    text: 'Emulator',
-    isEmulator: "true"
-  }];
+  // $scope.choices = [{
+  //   text: 'Physical Sensor',
+  //   isEmulator: "false"
+  // }, {
+  //   text: 'Emulator',
+  //   isEmulator: "true"
+  // }];
 
   $scope.init = function() {
     //Get sensors type
