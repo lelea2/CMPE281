@@ -60,6 +60,7 @@ module.exports = {
           res.status(200).json(data);
         })
         .catch(function(error) {
+          console.log(error);
           res.status(500).json(error)
         });
       } else if (data.roles === 'vendor') { //vendor
@@ -86,11 +87,13 @@ module.exports = {
             res.status(200).json(data);
           })
           .catch(function(error) {
+            console.log(error);
             res.status(500).json(error)
           });
         })
-        .catch(function(error) {
-          res.status(500).json(error);
+        .catch(function(error2) {
+          console.log(error2);
+          res.status(500).json(error2);
         });
       } else { //customer
         console.log('querying metering for customer...');
