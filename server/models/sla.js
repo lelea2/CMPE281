@@ -16,7 +16,14 @@ module.exports = function(sequelize, DataTypes) {
         // associations can be defined here
       }
     },
-    timestamps: false
+    timestamps: false,
+    freezeTableName: true,
+    // define the table's name
+    tableName: 'SLA',
+    // don't delete database entries but set the newly added attribute deletedAt
+    // to the current date (when deletion was done). paranoid will only work if
+    // timestamps are enabled
+    paranoid: true
   });
   return SLA;
 };

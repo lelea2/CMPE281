@@ -29,7 +29,8 @@ var express = require('express'),
     payment = require('./server/controllers/payment'),
     sensors = require('./server/controllers/sensors'),
     virtualsensors = require('./server/controllers/virtualsensors'),
-    usage = require('./server/controllers/usage');
+    usage = require('./server/controllers/usage'),
+    sla = require('./server/controllers/sla');
 
 
 // console.log('starting...');
@@ -129,6 +130,10 @@ app.post('/api/billings', billings.create);
 app.post('/api/usage', usage.create);
 app.post('/api/usage/:id', usage.update);
 app.get('/api/usage', usage.show);
+
+//SLA components
+app.get('/api/sla', sla.show);
+app.post('/api/sla', sla.create);
 
 /*****************************************************/
 /***************** Views Routing *********************/
