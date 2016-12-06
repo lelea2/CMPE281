@@ -16,7 +16,7 @@ module.exports = {
       name: data.name,
       description: data.description,
       ip: randomip('192.168.2.0', 24),
-      status: data.status || true,
+      status: data.status || 1,
       creator_id: req.headers.u,
       sensorhub_id: data.sensorhub_id,
       route_id: data.route_id
@@ -109,9 +109,9 @@ module.exports = {
   update(req, res) {
     var data = req.body;
     var reqBody = {
-      name: data.name,
-      description: data.description,
-      status: data.status || true
+      // name: data.name,
+      // description: data.description,
+      status: data.status
     };
     Host.update(reqBody, {
       where: {

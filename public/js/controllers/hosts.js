@@ -48,8 +48,19 @@ App.controller('hostsController', ['$scope', '$http', function ($scope, $http) {
     });
   };
 
-  $scope.handleHostStatus = function() {
-
+  $scope.handleHostStatus = function(id, status) {
+    console.log('handle host status');
+    $http({
+      method: 'PUT',
+      headers: APP_CLOUD.getHeaders(true),
+      url: '/api/hosts/' + id,
+      data: {
+        status: (status === true || status === 1) ? false : true
+      }
+    }).then(function(resp) {
+      alert('Update Bus Status sucessfully');
+      window.location.reload();
+    });
   };
 
   $scope.convertTime = function(date) {
@@ -62,6 +73,7 @@ App.controller('hostsController', ['$scope', '$http', function ($scope, $http) {
   };
 
   $scope.btnStatus = function(status) {
+    console.log(status);
     return 'Turn ' + ((status === true) ? 'Off' : 'On');
   };
 
