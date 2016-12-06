@@ -2,6 +2,7 @@
 
 var Account = require('./accounts');
 var TransactionManager = require('../models/').TransactionManager;
+var SLA = require('../models/').SLA;
 var Sensors = require('../models/').Sensors;
 var Usage = require('../models/').Usage;
 var uuid = require('node-uuid');
@@ -50,7 +51,10 @@ module.exports = {
       if (data.roles === 'admin') { //admin
         console.log('querying metering for admin...');
         Usage.findAll({
-          include: [TransactionManager]
+          include: [{
+            model: TransactionManager,
+            include: [SLA]
+          }]
         })
         .then(function(data) {
           res.status(200).json(data);
@@ -70,6 +74,7 @@ module.exports = {
           Usage.findAll({
             include: [{
               model: TransactionManager,
+              include: [SLA],
               where: {
                 id: {
                   $in: sensorIds
@@ -92,6 +97,7 @@ module.exports = {
         Usage.findAll({
           include: [{
             model: TransactionManager,
+            include: [SLA],
             where: {
               user_id: userId
             }

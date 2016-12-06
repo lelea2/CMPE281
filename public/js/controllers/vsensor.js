@@ -11,13 +11,13 @@ App.controller('vsensorsController', ['$scope', '$http', function ($scope, $http
       url: '/api/vsensors'
     }).then(function(resp) {
       console.log(resp.data);
-      var data = resp.data || [];
+      var data = resp.data.data || [];
       var arr = [];
       for (var i = 0; i < data.length; i++) {
         var tmp = data[i].VirtualSensor;
         tmp.type = data[i].Sensor.type;
         tmp.sensor_status = data[i].Sensor.status; //display sensor status
-        console.log(tmp);
+        // console.log(tmp);
         arr.push(tmp);
       }
       $scope.vsensors = arr;

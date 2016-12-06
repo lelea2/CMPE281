@@ -29,3 +29,12 @@ APP_CLOUD.getHeaders = function(setCookies) {
     'u': $('input[name="_userId"]').val()
   }
 };
+
+APP_CLOUD.getRole = function() {
+  return $('input[name="_role"]').val();
+};
+
+APP_CLOUD.formatDate = function(date) {
+  var tmp = new Date(date);
+  return (tmp.getMonth() + 1) + '/' + (tmp.getDate()) + '/' + tmp.getFullYear();
+}

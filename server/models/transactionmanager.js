@@ -27,13 +27,20 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
-    status: DataTypes.ENUM('success','fail')
+    sla_id: {
+      type: DataTypes.STRING,
+      references: {
+        model: 'SLA',
+        key: 'id'
+      }
+    }
   }, {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
         TransactionManagers.belongsTo(models.Sensors, { foreignKey: 'sensor_id' });
         TransactionManagers.belongsTo(models.VirtualSensors, { foreignKey: 'virtualsensor_id' });
+        TransactionManagers.belongsTo(models.SLA, { foreignKey: 'sla_id' });
       }
     },
     freezeTableName: true,

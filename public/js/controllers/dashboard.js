@@ -37,7 +37,7 @@ App.controller('dashboardController', ['$scope', '$http', function ($scope, $htt
     $http({
       method: 'GET',
       headers: APP_CLOUD.getHeaders(true),
-      url: '/api/sensors'
+      url: (APP_CLOUD.getRole() === 'customer') ? '/api/vsensors' : '/api/sensors'
     }).then(function(resp) {
       $scope.sensor_type = resp.data.metadata;
       Morris.Donut({

@@ -85,6 +85,34 @@ var findAllHosts = function(callback, errCallback) {
   });
 };
 
+var generateVSensors = function(vsensors) {
+  var clipper = 0,
+      location = 0,
+      speed = 0,
+      temperature = 0;
+  for (var i = 0; i < vsensors.length; i++) {
+    var type = vsensors[i].Sensor.type;
+    if (type === 1) {
+      location++;
+    } else if (type === 2) {
+      clipper++;
+    } else if (type === 3) {
+      speed++;
+    } else {
+      temperature++;
+    }
+  }
+  return {
+    data: vsensors,
+    metadata: {
+      location: location,
+      clipper: clipper,
+      speed: speed,
+      temperature: temperature
+    }
+  };
+};
+
 module.exports = {
 
   create(req, res) {
@@ -159,7 +187,6 @@ module.exports = {
         user_id: userId,
         virtualsensor_id: newSensor.id,
         sensor_id: sensor_id,
-        status: 'success',
         sla_id: data.sla_id
       };
       TransactionManager.create(reqBody)
@@ -211,11 +238,11 @@ module.exports = {
       include: [Sensors, VirtualSensors],
       attributes: [] //not include the attribute not needed
     }).then(function(sensors) {
-      res.status(200).json(sensors);
+      res.status(200).json(generateVSensors(sensors));
     }).catch(function(error) {
       console.log(error);
       res.status(500).json(error);
-    })
+    });
   },
 
   show(req, res) {

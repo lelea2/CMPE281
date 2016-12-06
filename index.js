@@ -127,7 +127,7 @@ app.get('/api/monitor/statistics', virtualsensors.show);
 app.get('/api/billings', billings.show);
 app.post('/api/billings', billings.create);
 
-//Usage components
+//Usage components (metering)
 app.post('/api/usage', usage.create);
 app.post('/api/usage/:id', usage.update);
 app.get('/api/usage', usage.show);
