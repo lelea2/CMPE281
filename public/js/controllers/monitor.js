@@ -6,7 +6,7 @@ App.controller('monitorController', ['$scope', '$http', function ($scope, $http)
     $http({
       method: 'GET',
       headers: APP_CLOUD.getHeaders(true),
-      url: '/api/vsensors'
+      url: '/api/monitor/statistics'
     }).then(function(resp) {
       console.log(resp.data);
       $scope.monitors = resp.data;
