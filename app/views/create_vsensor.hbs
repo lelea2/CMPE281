@@ -7,7 +7,7 @@
     <p>Create a new sensor with pre-configured type provided by app</p>
   </div>
   <div>
-    <form class="form-create-instance" ng-submit="createSensors()">
+    <form class="form-create-instance" ng-submit="handleVSensorCreate()">
       <div>
         <label for="inputName">Sensor Name</label>
         <input type="text" id="inputName" ng-model="formSensor.name" class="form-control" placeholder="Sensor name" required autofocus>
@@ -23,6 +23,12 @@
             <option ng-repeat="type in sensors_type" value={{type.id}}>{{type.type}}</option>
           </select>
         </div>
+      </div>
+      <div class="form-group sla-type">
+        <label for="sla-type">Select SLA type:</label>
+        <select class="form-control" ng-model="formSensor.sla_id">
+          <option ng-repeat="sla in sla_type" value={{sla.id}}>{{sla.description}}</option>
+        </select>
       </div>
       <div>
         <div class="form-group storage-type">

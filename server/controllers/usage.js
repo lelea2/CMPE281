@@ -29,7 +29,7 @@ module.exports = {
   update(req, res) {
     var data = req.body;
     var reqBody = {
-      data: data.data,
+      data: data.data //Usage
     };
     Usage.update(reqBody, {
       where: {

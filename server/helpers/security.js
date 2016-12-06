@@ -95,7 +95,7 @@ module.exports = (function() {
       if (userId === '' || userId.length !== 36) {
         next();
       } else {
-        res.redirect(302, '/sensors');
+        res.redirect(302, '/dashboard');
       }
     };
   }

@@ -117,7 +117,8 @@ app.post('/api/sensors/:id/status', sensors.update);
 
 //Virtual sensor component
 app.post('/api/vsensors', virtualsensors.create);
-app.get('/api/vsensors', virtualsensors.show);
+app.get('/api/vsensors', virtualsensors.show_customer);
+app.put('/api/vsensors/:id', virtualsensors.update);
 
 //Monitor component
 app.get('/api/monitor/statistics', virtualsensors.show);

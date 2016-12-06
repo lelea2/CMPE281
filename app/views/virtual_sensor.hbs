@@ -21,11 +21,10 @@
       <tbody>
         <tr ng-repeat="vsensor in vsensors">
           <td>{{vsensor.name}}</td>
-          <td>{{vconvertType(sensor.type)}}</td>
+          <td>{{vconvertType(vsensor.type)}}</td>
           <td>{{vsensor.description}}</td>
           <td>{{vsensor.storages}}</td>
-          <td><button ng-click="handleStatus(vsensor.id, sensor.status)" class="btn btn-sm">{{convertStatus(sensor.status)}}</button></td>
-          <td><button ng-click="handleDetail(vsensor.id, sensor.status)" class="btn btn-sm">View Detail</button></td>
+          <td><button ng-click="handleStatus(vsensor.id, vsensor.status, vsensor.sensor_status)" class="btn btn-sm">{{convertStatus(vsensor.status, vsensor.sensor_status)}}</button></td>
         </tr>
       </tbody>
     </table>
@@ -33,4 +32,4 @@
   </div>
   <a class="btn btn-primary" href="/create_vsensor">Create Virtual Sensor</a>
 </div>
-<script src="../js/controllers/vsensors.js"></script>
+<script src="../js/controllers/vsensor.js"></script>

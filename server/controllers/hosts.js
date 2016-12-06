@@ -33,7 +33,7 @@ module.exports = {
   show(req, res) {
     var userId = req.headers.u || '';
     Account.checkUser(userId, function(data) { //Check for admin vs. user as vendor
-      if (data.roles === 'admin') {
+      if (data.roles === 'admin' || data.roles === 'customer') {
         Host.findAll({
           include: [Routes, SensorHubs]
         })

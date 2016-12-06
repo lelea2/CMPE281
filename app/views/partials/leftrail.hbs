@@ -13,11 +13,18 @@
       <li>
         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Cloud Resource Monitoring <span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
+          {{#equal _role "admin"}}
           <li>
-              <a href="/monitor">Sensor Monitoring</a>
+            <a href="/monitor">Sensor Monitoring</a>
           </li>
+          {{/equal}}
+          {{#equal _role "vendor"}}
           <li>
-              <a href="/metering">Sensor Metering</a>
+            <a href="/monitor">Sensor Monitoring</a>
+          </li>
+          {{/equal}}
+          <li>
+            <a href="/metering">Sensor Metering</a>
           </li>
         </ul>
       <!-- /.nav-second-level -->
@@ -25,12 +32,21 @@
       <li>
         <a href="#"><i class="fa fa-wrench fa-fw"></i> Cloud Resource Management<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
+          {{#equal _role "customer"}}
+          <li>
+            <a href="/vsensors">Manage VSensor</a>
+          </li>
+          <li>
+            <a href="/create_vsensors">Provision VSensor</a>
+          </li>
+          {{else}}
           <li>
             <a href="/sensors">Manage Sensor</a>
           </li>
           <li>
             <a href="/create">Provision Sensor</a>
           </li>
+          {{/equal}}
         </ul>
         <!-- /.nav-second-level -->
       </li>
