@@ -42,7 +42,7 @@ DATABASE_PW=
 * HandleBar
 
 
-### How to deploy to heroku
+##### How to deploy to heroku
 
 ```
 //Create app in heroku
@@ -57,4 +57,11 @@ git push heroku <master-branch to deploy>
 //See how query run by tailing your logs
 heroku logs -t -a <your_app>
 
+```
+
+
+##### Experiment with Load Balancer implementation on Node
+
+```
+node index.js 8001 & node index.js 8002 & node index.js 8003 & node load-balancer.js 8000
 ```
