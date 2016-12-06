@@ -21,7 +21,7 @@ var addresses = [
 
 var i = 0;
 httpProxy.createServer(function (req, res, proxy) {
-    proxy.proxyRequest(req, res, addresses[i]);
-
-    i = (i + 1) % addresses.length;
+  console.log(addresses[i]);
+  proxy.proxyRequest(req, res, addresses[i]);
+  i = (i + 1) % addresses.length;
 }).listen(arguments[0] || 8000);

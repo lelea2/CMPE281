@@ -173,13 +173,13 @@ app.set('port', args[0] || process.env.PORT || 8000);
 //   console.log('Server started on port', app.get('port'));
 // });
 
-if (cluster.isMaster) { //with cluster
-  console.log('CPUS: ' + os.cpus().length);
-  for (var i = 0; i < os.cpus().length / 2; i++) {
-    var worker = cluster.fork();
-  }
-} else { //no cluster
+// if (cluster.isMaster) { //with cluster
+//   console.log('CPUS: ' + os.cpus().length);
+//   for (var i = 0; i < os.cpus().length / 2; i++) {
+//     var worker = cluster.fork();
+//   }
+// } else { //no cluster
   app.listen(app.get('port'), function () {
     console.log('Server started on port', app.get('port'));
   });
-}
+// }
