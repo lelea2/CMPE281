@@ -29,11 +29,11 @@
           {{#equal _role "customer"}}
           {{else}}
           {{{{raw-helper}}}}
-          <td>{{displayId(metering.TransactionManager.sensor_id)}}</td>
+          <td>{{metering.TransactionManager.Sensor.name}}</td>
           {{{{/raw-helper}}}}
           {{/equal}}
           {{{{raw-helper}}}}
-          <td>{{displayId(metering.TransactionManager.virtualsensor_id)}}</td>
+          <td>{{metering.TransactionManager.VirtualSensor.name}}</td>
           <td>{{metering.data}}</td>
           <td>{{displayDate(metering.fromDate)}}</td>
           <td>{{displayDate(metering.endDate)}}</td>

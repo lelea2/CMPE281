@@ -50,9 +50,11 @@
         </ul>
         <!-- /.nav-second-level -->
       </li>
+      {{#equal _role "admin"}}
       <li>
         <a href="/loadbalancing"><i class="fa fa-balance-scale fa-fw"></i> Load Balancing</a>
       </li>
+      {{/equal}}
       <li>
         <a href="/billings"><i class="fa fa-edit fa-fw"></i> Billing</a>
       </li>

@@ -57,6 +57,7 @@ app.use(cookieParser('keycatboard'));
 // });
 
 //Set up userId
+
 app.use(function(req, res, next) {
   res.locals._userId = security.getUserId(req) || '';
   res.locals._role = security.getUserRole(req) || 'customer';
@@ -142,6 +143,15 @@ app.get('/api/usage', usage.show);
 //SLA components
 app.get('/api/sla', sla.show);
 app.post('/api/sla', sla.create);
+
+//load balancing API
+app.get('/api/loadbalance', function(req, res) {
+  res.status(200).json({
+    server1: req.headers._server1,
+    server2: req.headers._server2,
+    urls: (!!req.headers._url) ? req.headers._url.split(',') : []
+  });
+});
 
 /*****************************************************/
 /***************** Views Routing *********************/

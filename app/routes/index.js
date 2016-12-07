@@ -62,6 +62,12 @@ exports.metering = function(req, res, next) {
 
 //Displaying loadbalancig page
 exports.loadbalancing = function(req, res, next) {
+  // console.log('Load balancing displaying...');
+  // var arr = (!!req.headers.url) ? req.headers.url.split(',') : [];
+  // var server1 = req.headers._server1;
+  // console.log(req.headers);
+  // var server2 = req.headers._server2;
+  // console.log(server1);
   res.render('loadbalance', { title: 'Load Balancing', layout: 'main' }, function (err, html) {
     if (err) {
       console.log(err);
