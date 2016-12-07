@@ -27,7 +27,7 @@ http.createServer(function(req, res) {
       proxy.web(req, res, { target: 'http://localhost:8002' });
       break;
     default:
-      console.log('Listing to port 8002');
+      console.log('Listing to port 8003');
       proxy.web(req, res, { target: 'http://localhost:8003' });
       break;
   }

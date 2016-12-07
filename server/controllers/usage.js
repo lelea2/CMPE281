@@ -4,6 +4,7 @@ var Account = require('./accounts');
 var TransactionManager = require('../models/').TransactionManager;
 var SLA = require('../models/').SLA;
 var Sensors = require('../models/').Sensors;
+var VirtualSensors = require('../models/').VirtualSensors;
 var Usage = require('../models/').Usage;
 var uuid = require('node-uuid');
 
@@ -53,7 +54,7 @@ module.exports = {
         Usage.findAll({
           include: [{
             model: TransactionManager,
-            include: [SLA]
+            include: [SLA, Sensors, VirtualSensors]
           }]
         })
         .then(function(data) {
@@ -75,7 +76,7 @@ module.exports = {
           Usage.findAll({
             include: [{
               model: TransactionManager,
-              include: [SLA],
+              include: [SLA, Sensors, VirtualSensors],
               where: {
                 id: {
                   $in: sensorIds
@@ -100,7 +101,7 @@ module.exports = {
         Usage.findAll({
           include: [{
             model: TransactionManager,
-            include: [SLA],
+            include: [SLA, VirtualSensors], //do not need to query sensor here for customer
             where: {
               user_id: userId
             }
