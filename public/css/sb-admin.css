@@ -83,6 +83,10 @@
 .sidebar .nav-third-level li a {
   padding-left: 52px;
 }
+
+.sidebar li a {
+  color: #337ab7 !important;
+}
 @media (min-width: 768px) {
 /*  .sidebar {
     z-index: 1;
