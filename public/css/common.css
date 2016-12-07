@@ -112,7 +112,15 @@ p.error {
   font-weight: bold;
 }
 
-table tr:nth-child(odd) {
+table {
+  width: 95%;
+  margin: auto 20px;
+}
+
+table thead tr {
+  background: #ddd;
+}
+table tbody tr:nth-child(odd) {
   background: #FFFFE0;
 }
 
