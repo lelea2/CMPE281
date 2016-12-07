@@ -1,6 +1,7 @@
 'use strict';
 
 var Account = require('./accounts');
+var User = require('../models/').Users;
 var Billings = require('../models/').Billings;
 var PaymentHistory = require('../models/').PaymentHistory;
 var uuid = require('node-uuid');
@@ -23,6 +24,7 @@ module.exports = {
         res.status(201).json(newBilling);
       })
       .catch(function (error) {
+        console.log(error);
         res.status(500).json(error);
       });
   },
@@ -31,7 +33,9 @@ module.exports = {
     var userId = req.headers.u;
     Account.checkUser(userId, function(data) { //Check for admin vs. user as vendor
       if (data.roles === 'admin') {
-        Billings.findAll()
+        Billings.findAll({
+          include: [User]
+        })
         .then(function (billings) {
           res.status(200).json(billings);
         })

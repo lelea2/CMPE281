@@ -140,7 +140,7 @@
             <tr>
               <th>#</th>
               <th>Vendors</th>
-              <th>Date</th>
+              <th>Due Date</th>
               <th>Billing amount</th>
               <th>Paid</th>
             </tr>
@@ -149,8 +149,8 @@
           <tbody>
             <tr ng-repeat="billing in billings">
               <td>{{$index + 1}}</td>
-              <td>{{billing.userId}}</td>
-              <td></td>
+              <td>{{billing.User.firstName}}</td>
+              <td>{{displayDate(billing.dueDate)}}</td>
               <td>{{billing.amount}}</td>
               <td>{{billing.isPaid}}</td>
             </tr>

@@ -171,4 +171,9 @@ App.controller('dashboardController', ['$scope', '$http', function ($scope, $htt
     e.preventDefault();
     google.maps.event.trigger(selectedMarker, 'click');
   };
+
+  $scope.displayDate = function(date) {
+    return APP_CLOUD.formatDate(date);
+  };
+
 }]);
