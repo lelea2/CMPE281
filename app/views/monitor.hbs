@@ -30,7 +30,7 @@
           <td>{{$index + 1}}</td>
           <td>{{monitor.Sensor.Host.SensorHub.name}}</td>
           <td>{{monitor.Sensor.Host.name}}</td>
-          <td>{{monitor.Sensor.Host.Route.description}}</td>
+          <td><a href="{{monitor.Sensor.Host.Route.url}}" target="_blank">{{monitor.Sensor.Host.Route.description}}</a></td>
           <td>{{monitor.Sensor.name}}</td>
           <td>{{convertType(monitor.Sensor.type)}}</td>
           <td>{{monitor.Sensor.status}}</td>
