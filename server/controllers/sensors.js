@@ -59,6 +59,7 @@ function createSensorDetail(newSensor, type, res) {
         res.status(201).json(detailSensor);
       })
       .catch(function (error) {
+        console.log('Error adding location detail sensor');
         res.status(500).json(error);
       });
   } else if (type === 2) { //clipper sensor
@@ -69,10 +70,10 @@ function createSensorDetail(newSensor, type, res) {
     };
     ClipperSensor.create(data)
       .then(function (detailSensor) {
-        res.status(201).json(newSensor);
+        res.status(201).json(detailSensor);
       })
       .catch(function (error) {
-        console.log('Error adding detail sensor');
+        console.log('Error adding clipper detail sensor');
         res.status(500).json(error);
       });
   } else if (type === 3) { //speed sensor
@@ -84,10 +85,10 @@ function createSensorDetail(newSensor, type, res) {
     };
     SpeedSensor.create(data)
       .then(function (detailSensor) {
-        res.status(201).json(newSensor);
+        res.status(201).json(detailSensor);
       })
       .catch(function (error) {
-        console.log('Error adding detail sensor');
+        console.log('Error adding speed detail sensor');
         res.status(500).json(error);
       });
   } else { //temperature sensor
@@ -99,7 +100,7 @@ function createSensorDetail(newSensor, type, res) {
     };
     TemperatureSensor.create(data)
       .then(function (detailSensor) {
-        res.status(201).json(newSensor);
+        res.status(201).json(detailSensor);
       })
       .catch(function (error) {
         console.log('Error adding detail sensor');

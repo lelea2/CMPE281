@@ -13,4 +13,7 @@ App.controller('billingsController', ['$scope', '$http', function ($scope, $http
     });
   };
 
+  $scope.displayDate = function(date) {
+    return APP_CLOUD.formatDate(date);
+  };
 }]);

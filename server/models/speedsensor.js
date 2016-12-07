@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(sequelize, DataTypes) {
-  var TemperatureSensors = sequelize.define('TemperatureSensors', {
+  var SpeedSensors = sequelize.define('SpeedSensors', {
     id: {
       type: DataTypes.STRING,
       primaryKey: true
@@ -25,5 +25,5 @@ module.exports = function(sequelize, DataTypes) {
     },
     timestamps: false
   });
-  return TemperatureSensors;
+  return SpeedSensors;
 };

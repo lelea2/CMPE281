@@ -20,9 +20,9 @@
       <tbody>
         <tr ng-repeat="billing in billings">
           <td>{{$index + 1}}</td>
-          <td>{{billing.startDate}}</td>
-          <td>{{billing.endDate}}</td>
-          <td>{{billing.dueDate}}</td>
+          <td>{{displayDate(billing.startDate)}}</td>
+          <td>{{displayDate(billing.endDate)}}</td>
+          <td>{{displayDate(billing.dueDate)}}</td>
           <td>${{billing.amount}}</td>
           <td>{{billing.isPaid}}</td>
         </tr>
