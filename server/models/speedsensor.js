@@ -21,6 +21,7 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+        SpeedSensors.belongsTo(models.Sensors, { foreignKey: 'sensor_id' });
       }
     },
     timestamps: false

@@ -25,10 +25,7 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        PaymentInfo.belongsTo(models.Users, {
-          onDelete: 'cascade',
-          onUpdate: 'cascade'
-        });
+        PaymentInfo.belongsTo(models.Users, { foreignKey: 'userId' });
       }
     },
     timestamps: false

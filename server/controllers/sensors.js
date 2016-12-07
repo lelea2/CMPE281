@@ -1,6 +1,7 @@
 'use strict';
 
 var Account = require('./accounts');
+var Hosts = require('../models/').Hosts;
 var SensorType = require('../models/').SensorTypes;
 var Sensors = require('../models/').Sensors;
 var ClipperSensor = require('../models/').ClipperSensors;
@@ -48,11 +49,7 @@ function createSensorDetail(newSensor, type, res) {
       id: id,
       sensor_id: newSensor.id,
       latitude: DEFAULT_LATITUDE,
-      longitude: DEAFULT_LONGITUDE,
-      src_latitude: DEFAULT_LATITUDE,
-      src_longitude: DEAFULT_LONGITUDE,
-      dest_latitude: DEFAULT_LATITUDE,
-      dest_longitude: DEAFULT_LONGITUDE
+      longitude: DEAFULT_LONGITUDE
     };
     LocationSensor.create(data)
       .then(function (detailSensor) {
@@ -180,6 +177,8 @@ module.exports = {
           res.status(200).json(generateSensors(sensors));
         })
         .catch(function (error) {
+          console.log(error);
+          console.log('Error showing sensors');
           res.status(500).json(error);
         });
       }
@@ -227,7 +226,30 @@ module.exports = {
       res.status(200).json(types);
     }).catch(function(error) {
       res.status(500).json(error);
+    });
+  },
+
+  //Get location sensors
+  show_location(req, res) {
+    LocationSensor.findAll({
+      include: {
+        model: Sensors,
+        include: {
+          model: Hosts,
+          where: {
+            status: true //only online bus
+          }
+        }
+      }
     })
+    .then(function(sensors) {
+      res.status(200).json(sensors);
+    })
+    .catch(function(error) {
+      console.log(error);
+      console.log('Error showing location sensors');
+      res.status(500).json(error);
+    });
   }
 
 };

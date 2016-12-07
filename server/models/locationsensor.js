@@ -14,15 +14,12 @@ module.exports = function(sequelize, DataTypes) {
     },
     latitude: DataTypes.DECIMAL(10,6),
     longitude: DataTypes.DECIMAL(10,6),
-    src_latitude: DataTypes.DOUBLE,
-    src_longitude: DataTypes.DOUBLE,
-    dest_latitude: DataTypes.DOUBLE,
-    dest_longitude: DataTypes.DOUBLE,
     timestamp: DataTypes.DATE
   }, {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+        LocationSensors.belongsTo(models.Sensors, { foreignKey: 'sensor_id' });
       }
     },
     timestamps: false

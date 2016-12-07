@@ -19,6 +19,7 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+        ClipperSensors.belongsTo(models.Sensors, { foreignKey: 'sensor_id' });
       }
     },
     timestamps: false

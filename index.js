@@ -106,6 +106,7 @@ app.post('/api/routes', route.create);
 //Hosts components
 app.post('/api/hosts', hosts.create);
 app.get('/api/hosts', hosts.show);
+app.get('/api/hosts_location', sensors.show_location);
 app.get('/api/hosts/:id', hosts.detail);
 app.put('/api/hosts/:id', hosts.update);
 app.get('/api/hosts_status', hosts.showstatus);

@@ -6,6 +6,8 @@ App.controller('dashboardController', ['$scope', '$http', function ($scope, $htt
   $scope.directionsService = null;
   $scope.billings = [];
 
+  var iconBase = '../images/bus.png';
+
   $scope.init = function() {
     //Draw sensor type
     $scope.drawSensorStat();
@@ -105,22 +107,11 @@ App.controller('dashboardController', ['$scope', '$http', function ($scope, $htt
     $scope.directionsService = new google.maps.DirectionsService;
     var mapOptions = {
         zoom: 8,
-        center: new google.maps.LatLng(37.353694,-121.952618)
+        center: new google.maps.LatLng(37.353694, -121.952618)
         //mapTypeId: google.maps.MapTypeId.TERRAIN
     };
     $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
     var infoWindow = new google.maps.InfoWindow();
-  //    var status = "http://localhost:8083/cloudproject/dashboard/map?user="+user+"&role="+role;
-  // $.getJSON( status, {
-  // })
-  //  .done(function( cities ) {
-
-  //    for (i = 0; i < cities.length; i++){
-  //        createMarker(cities[i]);
-  //    }
-  //    //Angular App Module and Controller
-
-  // });
 
     //Create routes
     $http({
@@ -133,6 +124,21 @@ App.controller('dashboardController', ['$scope', '$http', function ($scope, $htt
         $scope.createRoute(routes[i]);
       }
     });
+
+    //Display bus on routes
+    $http({
+      method: 'GET',
+      headers: APP_CLOUD.getHeaders(true),
+      url: '/api/hosts_location'
+    }).then(function(resp) {
+      var sensors = resp.data;
+      for (i = 0; i < sensors.length; i++){
+        $scope.createMarker({
+          latitude: sensors[i].latitude,
+          longitude: sensors[i].longitude
+        });
+      }
+    });
   };
 
   $scope.createMarker = function (info) {
@@ -143,10 +149,9 @@ App.controller('dashboardController', ['$scope', '$http', function ($scope, $htt
         icon: iconBase
     });
     marker.content = '<div class="infoWindowContent">' + info.description + '</div>';
-
     google.maps.event.addListener(marker, 'click', function(){
-        infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
-        infoWindow.open($scope.map, marker);
+      infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
+      infoWindow.open($scope.map, marker);
     });
     $scope.markers.push(marker);
   };
