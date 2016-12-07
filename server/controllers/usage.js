@@ -49,6 +49,7 @@ module.exports = {
   show(req, res) {
     var userId = req.headers.u;
     Account.checkUser(userId, function(data) { //Check for admin vs. user as vendor
+      console.log('querying for data...');
       if (data.roles === 'admin') { //admin
         console.log('querying metering for admin...');
         Usage.findAll({
