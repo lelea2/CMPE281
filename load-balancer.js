@@ -9,7 +9,6 @@ var monkey = require('node-monkey')();
 // console.log(monkey);
 monkey.attachConsole();
 
-
 http.createServer(function(req, res) {
   var hostname = req.headers.host.split(':')[0];
   var pathname = url.parse(req.url).pathname;

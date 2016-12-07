@@ -111,3 +111,11 @@ p.error {
   color: #B20000;
   font-weight: bold;
 }
+
+table .tr:nth-child(odd) {
+  background: #FFFFE0;
+}
+
+table .tr:nth-child(even) {
+  background: #E0FFFF;
+}

@@ -65,3 +65,9 @@ heroku logs -t -a <your_app>
 ```
 node index.js 8001 & node index.js 8002 & node index.js 8003 & node load-balancer.js 8000
 ```
+
+##### View console.log with node-monkey
+```
+//Load
+http://localhost:50500/
+```
