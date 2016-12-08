@@ -5,9 +5,9 @@ var http = require('http'),
     proxy = httpProxy.createProxyServer({}),
     url = require('url');
 
-var monkey = require('node-monkey')();
+//var monkey = require('node-monkey')();
 // console.log(monkey);
-monkey.attachConsole();
+//monkey.attachConsole();
 
 global.server1 = 0;
 global.server2 = 0;
@@ -52,6 +52,6 @@ http.createServer(function(req, res) {
         break;
     }
   }
-}).listen(8000, function() {
-  console.log('proxy listening on port 8000');
+}).listen(8080, function() {
+  console.log('proxy listening on port 8080');
 });
