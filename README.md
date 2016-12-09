@@ -82,7 +82,12 @@ npm i forever -g
 
 netstat -an | grep "LISTEN "
 
+### Run application
 forever start index.js 8001 & forever start index.js 8002 & forever start index.js 8003 & forever start load-balancer.js 8080
+
+### Stop application
+forever stop load-balancer.js
+forever stop index.js
 
 sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to 8080
 sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to 8000
