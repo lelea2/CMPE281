@@ -179,7 +179,7 @@ app.get('/logout', function(req, res) {
   res.redirect(302, '/');
 });
 
-app.set('port', args[0] || process.env.PORT || 8000);
+app.set('port', args[0] || process.env.PORT || 8080);
 // app.listen(app.get('port'), function () {
 //   console.log('Server started on port', app.get('port'));
 // });

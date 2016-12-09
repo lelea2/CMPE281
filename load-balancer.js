@@ -52,6 +52,6 @@ http.createServer(function(req, res) {
         break;
     }
   }
-}).listen(8000, function() {
+}).listen(8080, function() {
   console.log('proxy listening on port 8000');
 });

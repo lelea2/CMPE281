@@ -71,3 +71,24 @@ node index.js 8001 & node index.js 8002 & node index.js 8003 & node load-balance
 //Load
 http://localhost:50500/
 ```
+
+##### EC2
+
+npm i forever -g
+
+
+
+```
+
+netstat -an | grep "LISTEN "
+
+forever start index.js 8001 & forever start index.js 8002 & forever start index.js 8003 & forever start load-balancer.js 8080
+
+sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to 8080
+sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to 8000
+sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to 8001
+sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to 8002
+sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to 8003
+
+```
+
