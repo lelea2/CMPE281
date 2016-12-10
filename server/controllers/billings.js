@@ -46,7 +46,8 @@ module.exports = {
         Billings.findAll({
           where: {
             userId: userId
-          }
+          },
+          include: [User]
         })
         .then(function (billings) {
           res.status(200).json(billings);

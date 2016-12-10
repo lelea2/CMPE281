@@ -5,7 +5,6 @@
     <p>View your billings history as below</p>
   </div>
   <div>
-    {{{{raw-helper}}}}
     <table class="table">
       <thead>
         <tr>
@@ -14,10 +13,16 @@
           <th>End Date</th>
           <th>Due Date</th>
           <th>Amount($)</th>
+          {{#equal _role "customer"}}
+          {{else}}
+          <th>User Email</th>
+          {{/equal}}
           <th>Paid</th>
         </tr>
       </thead>
       <tbody>
+      {{#equal _role "customer"}}
+        {{{{raw-helper}}}}
         <tr ng-repeat="billing in billings">
           <td>{{$index + 1}}</td>
           <td>{{displayDate(billing.startDate)}}</td>
@@ -26,9 +31,22 @@
           <td>${{billing.amount}}</td>
           <td>{{billing.isPaid}}</td>
         </tr>
+        {{{{/raw-helper}}}}
+      {{else}}
+        {{{{raw-helper}}}}
+        <tr ng-repeat="billing in billings">
+          <td>{{$index + 1}}</td>
+          <td>{{displayDate(billing.startDate)}}</td>
+          <td>{{displayDate(billing.endDate)}}</td>
+          <td>{{displayDate(billing.dueDate)}}</td>
+          <td>${{billing.amount}}</td>
+          <td>{{billing.User.email}}</td>
+          <td>{{billing.isPaid}}</td>
+        </tr>
+        {{{{/raw-helper}}}}
+      {{/equal}}
       </tbody>
     </table>
-    {{{{/raw-helper}}}}
   </div>
 </div>
 <script src="../js/controllers/billings.js"></script>
