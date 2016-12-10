@@ -135,11 +135,17 @@ app.get('/api/monitor/statistics', virtualsensors.show);
 //Billings components
 app.get('/api/billings', billings.show);
 app.post('/api/billings', billings.create);
+app.post('/api/billings/calculate/:id', function(req, res) {
+  usage.show_detail(req, res).then(function(data) {
+
+  });
+});
 
 //Usage components (metering)
 app.post('/api/usage', usage.create);
 app.post('/api/usage/:id', usage.update);
 app.get('/api/usage', usage.show);
+app.get('/api/usage/:id', usage.show_detail);
 
 //SLA components
 app.get('/api/sla', sla.show);

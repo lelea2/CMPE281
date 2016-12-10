@@ -28,6 +28,24 @@ module.exports = {
       });
   },
 
+  show_detail(req, res) {
+    Usage.findAll({
+      where: {
+        id: req.params.id
+      },
+      include: [{
+        model: TransactionManager,
+        include: [SLA]
+      }]
+    })
+    .then(function (data) {
+      res.status(200).json(data[0]);
+    })
+    .catch(function (error) {
+      res.status(500).json(error);
+    });
+  },
+
   update(req, res) {
     var data = req.body;
     var reqBody = {
