@@ -4,6 +4,7 @@ Final project for CMPE281 -- Cloud technology
 ###### Demo
 [link text](https://www.youtube.com/watch?v=9mgMhlu86yg "Demo video")
 
+[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
 
 ###### DB Command
 
