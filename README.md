@@ -1,6 +1,9 @@
 ### CMPE281
 Final project for CMPE281 -- Cloud technology
 
+###### Demo
+https://www.youtube.com/watch?v=9mgMhlu86yg
+
 ###### DB Command
 
 ```
